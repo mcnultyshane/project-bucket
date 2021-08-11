@@ -4,9 +4,7 @@
         <img src="https://img.shields.io/badge/license-MIT-brightgreen" /></a>
   
   ## Description
-  The Project refactors a Google Books API search engine from a RESTful API to a GraphQl API with Apollo Server.
-  This is a MERN Stack application (MongoDB, Express.js, React, and Node.js).  This application allows a user to create an account, search for one or many books, and then save them to their list.  All of the user's saved books can be viewed under their own tab where they are able to remove books as well.
-
+  MERN STACK APPLICATION
 
   ## Table of Contents
   - [Installation](#installation)
@@ -19,7 +17,7 @@
   ## Installation
  
   ## Usage
-  A link to the deployed application can be found [here](https://booksearch--s.herokuapp.com/).
+  A link to the deployed application can be found [here]().
 
   ![Screenshot](...)
     
@@ -36,7 +34,7 @@
   
 
  ##### Github: 
- [github.com/Drake-G](https://github.com/Drake-G)
- [github.com/KIMBERLYSEDDON](https://github.com/KIMBERLYSEDDON)
- [github.com/shaneconwell](https://github.com/shaneconwell)
+ [github.com/Drake-G](https://github.com/Drake-G)<br>
+ [github.com/KIMBERLYSEDDON](https://github.com/KIMBERLYSEDDON)<br>
+ [github.com/shaneconwell](https://github.com/shaneconwell)<br>
  [github.com/mcnultyshane](https://github.com/mcnultyshane)
