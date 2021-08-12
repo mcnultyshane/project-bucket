@@ -5,7 +5,17 @@ const campaignSchema = new Schema({
         type: String
     },
     location: {
-        
+
+    },
+    needs: {
+        type: [String],
+    },
+    donations: {
+        type: Number
     }
 
 })
+
+const Campaign = model("Campaign", campaignSchema)
+
+module.exports = Campaign;
