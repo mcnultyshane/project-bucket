@@ -1,21 +1,31 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import Navbar from './components/Navbar';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import CampaignList from "./pages/CampaignList";
+import Profile from "./pages/Profile"
+import { createTheme } from "@material-ui/core/styles";
+import { dark } from "@material-ui/core/styles/createPalette";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -25,16 +35,32 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const theme = createTheme({
+  type: dark,
+  palette: {
+    lightGreen: "#B4EFB8",
+    darkGreen: "#77D47D",
+    gray: "#666b6c",
+    black: "#000000",
+  },
+});
+
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>
-      <>
-        <Switch>
-          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-        </Switch>
-      </>
-    </Router>
+      <Router>
+        <div style={{ backgroundColor: "#000000", height: '100vh' }}>
+          <Navbar theme={theme} />
+
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/campaigns" component={CampaignList}/>
+            <Route exact path="/profile" component={Profile}/>
+            <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
+          </Switch>
+
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
