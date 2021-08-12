@@ -1,18 +1,35 @@
 const { Schema, model } = require("mongoose");
 
+
 const campaignSchema = new Schema({
     name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    description: {
         type: String
     },
-    location: {
+    location: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Location'
+        }
+    ],
+    updates: {
+        type: [String]
+    },
 
-    },
-    needs: {
-        type: [String],
-    },
     donations: {
-        type: Number
-    }
+        type: Number,
+        min: 0.99
+    },
+    teamMembers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Team'
+        }
+    ]
 
 })
 

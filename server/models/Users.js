@@ -3,8 +3,8 @@ const {
     model
 } = require("mongoose");
 const bcrypt = require("bcrypt");
-const geoSchema = require("./Location");
-const bucketSchema = require("./BucketList")
+const location = require("./Location");
+const bucket = require("./BucketList")
 
 const userSchema = new Schema({
     username: {
@@ -26,13 +26,15 @@ const userSchema = new Schema({
     },
     firstName: {
         type: String,
+        trim: true
     },
     lastName: {
         type: String,
+        trim: true
     },
-    bucketList: [bucketSchema],
+    bucketList: [bucket.schema],
+    location: [location.schema],
 
-    location: [geoSchema],
 });
 
 // custom method to compare and validate password for logging in
@@ -49,12 +51,6 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
-
-// when we query a user, we'll also get another field called 'bucketList' with the Bucket List associated with that user
-userSchema.virtual("bucketList").get(function() {
-    return this.bucketList;
-}) 
-
 
 
 const User = model("User", userSchema);
