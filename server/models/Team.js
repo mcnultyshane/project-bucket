@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const teamSchema = new Schema ({
-    friend: {
+    follower: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },

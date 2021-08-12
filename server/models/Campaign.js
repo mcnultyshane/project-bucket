@@ -7,29 +7,27 @@ const campaignSchema = new Schema({
         required: true,
         trim: true,
     },
-    description: {
-        type: String
-    },
-    location: [
+    contributers: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Location'
+            ref: 'User'
         }
     ],
-    updates: {
-        type: [String]
-    },
 
-    donations: {
-        type: Number,
-        min: 0.99
-    },
-    teamMembers: [
+    updates: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Team'
+            type: String,
+            ref: 'Update'
         }
-    ]
+    ],
+    dateCreated: {
+        type: Date,
+        default: Date.now
+      },
+    // donations: {
+    //     type: Number,
+    //     min: 0.99
+    // },
 
 })
 
