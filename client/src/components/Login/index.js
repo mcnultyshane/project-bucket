@@ -17,9 +17,9 @@ export const Login=()=>{
                 <Typography variant='caption'>Please fill out this form to login</Typography>
                 </Grid>
                 <form>
-                    <TextField fullWidth label='Email'/>
-                    <TextField fullWidth label='Password'/>
-                    <Button align='center' type='submit' variant='contained' style={submitStyle} >Login</Button>
+                    <TextField id='loginEmail' fullWidth label='Email'/>
+                    <TextField id='loginPassword' fullWidth label='Password'/>
+                    <Button id='loginSubmit' align='center' type='submit' variant='contained' style={submitStyle} >Login</Button>
                 </form>
             </Paper>
         </Grid>
