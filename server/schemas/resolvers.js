@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Campaign } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -13,7 +13,7 @@ const resolvers = {
   
       me: async (parent, args, context) => {
         if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate("books");
+          return User.findOne({ _id: context.user._id });
         }
         throw new AuthenticationError("You need to be logged in!");
       },
@@ -58,6 +58,17 @@ const resolvers = {
       return { token, user };
     },
 
+    // do we need a user context if block to be logged in?
+    addCampaign: async (parent, { title, description, fundsNeeded }, context) => {
+      const campaign = await Campaign.create({
+        title, 
+        description,
+        fundsNeeded
+        
+      });
+      return campaign;
+    },
+    
   },
 };
 
