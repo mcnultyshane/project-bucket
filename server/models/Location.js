@@ -1,10 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-const geoSchema = new Schema ({
-    name: {
+const locationSchema = new Schema ({
+    address: {
         type: String,
     },
-    location: {
+    coordinates: {
         type: String,
     
     }
@@ -24,5 +24,7 @@ const geoSchema = new Schema ({
     //     }
     //   },
 })
+const Location = model("Location", locationSchema)
 
-module.exports = geoSchema;
+
+module.exports = Location;
