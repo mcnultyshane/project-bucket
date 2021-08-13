@@ -7,6 +7,10 @@ export const Login=()=>{
     const headerStyle={margin:0}
     const avatarStyle={backgroundColor:'#77D47D'}
     const submitStyle={backgroundColor: '#77D47D'}
+    function handleSubmit(e) {
+        e.preventDefualt()
+        alert('Thank you for submitting the form')
+    }
     return (
         <Grid>
             <Paper elevation={20} style={paperStyle}>
@@ -16,7 +20,7 @@ export const Login=()=>{
                 <h2 style={headerStyle}>Login</h2>
                 <Typography variant='caption'>Please fill out this form to login</Typography>
                 </Grid>
-                <form>
+                <form onSubmit={handleSubmit} >
                     <TextField id='loginEmail' fullWidth label='Email'/>
                     <TextField id='loginPassword' fullWidth label='Password'/>
                     <Button id='loginSubmit' align='center' type='submit' variant='contained' style={submitStyle} >Login</Button>
