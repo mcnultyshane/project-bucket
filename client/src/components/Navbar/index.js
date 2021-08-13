@@ -6,7 +6,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListAltTwoToneIcon from "@material-ui/icons/ListAltTwoTone";
 import HomeTwoTone from "@material-ui/icons/HomeTwoTone";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Signup from "../Signup";
+import { SignupButton } from "../SignupButton";
+import { LoginButton } from "../LoginButton"
 import useStyles from "./styles";
 import Auth from '../../utils/auth'
 
@@ -67,7 +68,7 @@ export default function Navbar() {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
         >
-          <Signup />
+          <SignupButton />
         </Modal>
         Sign Up
         </MenuItem>
@@ -169,17 +170,19 @@ export default function Navbar() {
               <AccountCircle />
             </IconButton> ) : (
             <ButtonGroup variant="contained" color="secondary">
-              <Button>Log In</Button>
-              <Button onClick={handleOpen}>
+              <Button>
+                <LoginButton />
+              </Button>
+              {/* <Button onClick={handleOpen}>
                 <Modal
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"
-                >
-                  <Signup />
-                </Modal>
-                Sign Up
+                > */}
+                <Button>
+                  <SignupButton />
+            
               </Button>
             </ButtonGroup>
             )}

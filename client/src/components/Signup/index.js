@@ -89,12 +89,6 @@ export default function Signup() {
             fullWidth
             label="Password"
           />
-          <TextField
-            onChange={handleChange}
-            id="signupConfPass"
-            fullWidth
-            label="Confirm Password"
-          />
           <Button
             id="signupSubmit"
             align="center"
