@@ -55,6 +55,7 @@ function SignupButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,8 +67,8 @@ function SignupButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Sign Up
+      <button type="button" onClick={handleOpen} style={buttonStyle} >
+        SIGN UP
       </button>
       <Modal
         aria-labelledby="spring-modal-title"

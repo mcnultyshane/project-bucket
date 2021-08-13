@@ -39,11 +39,15 @@ export const UpdateCampaign = () => {
   }));
 
   const classes = useStyles();
-  const paperStyle = { padding: "30px 20px", width: 700, margin: "20px auto" };
+  const paperStyle = { padding: "30px 20px", width: 700, margin: "20px auto"};
+  const gridStyle = {borderRadius:15 };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#77D47D" };
-  const submitStyle = { backgroundColor: "#77D47D" };
+  // const avatarStyle = { backgroundColor: "#77D47D" };
+  const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
+  const whiteBackStyle = {backgroundColor: 'white', marginBottom:20};
+  const dropdownStyle = {marginBottom: 20};
+
   const [campaign, setCampaign] = React.useState('');
 
   const handleChange = (event) => {
@@ -52,19 +56,19 @@ export const UpdateCampaign = () => {
 
 
   return (
-    <Grid align="center">
+    <Grid align="center" style={gridStyle}>
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle}>
+          {/* <Avatar style={avatarStyle}>
             <AddCircleOutlineOutlinedIcon />
-          </Avatar>
-          <h2 style={headerStyle}>Update Campaign</h2>
+          </Avatar> */}
+          <h2 style={headerStyle}>UPDATE CAMPAIGN</h2>
           <Typography variant="caption">
             Please fill out this form to create a new campaign
           </Typography>
         </Grid>
         <form>
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} style={dropdownStyle}>
             <InputLabel id="demo-simple-select-helper-label">Campaign</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
@@ -82,8 +86,9 @@ export const UpdateCampaign = () => {
             <FormHelperText>Select a campaign to update</FormHelperText>
           </FormControl>
           <TextField
+
             id="newCampaignDescription"
-            style={textInputStyle}
+            style={textInputStyle, whiteBackStyle}
             fullWidth
             label="Description"
             multiline

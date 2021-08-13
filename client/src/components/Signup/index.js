@@ -6,7 +6,7 @@ export const Signup=()=>{
     const paperStyle={padding: '30px 20px', width:300, margin:'20px auto'}
     const headerStyle={margin:0}
     const avatarStyle={backgroundColor:'#77D47D'}
-    const submitStyle={backgroundColor: '#77D47D'}
+    const submitStyle={backgroundColor: '#77D47D', marginTop:10}
     return (
         <Grid>
             <Paper elevation={20} style={paperStyle}>

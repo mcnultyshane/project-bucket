@@ -64,10 +64,6 @@ function App() {
             <Route exact path="/profile" component={Profile}/>
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
-          <NewCampaignButton />
-          <UpdateCampaignButton />
-          <LoginButton />
-          <SignupButton />
         </div>
       </Router>
     </ApolloProvider>

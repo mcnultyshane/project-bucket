@@ -55,6 +55,7 @@ function LoginButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,8 +67,8 @@ function LoginButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Login
+      <button type="button" onClick={handleOpen} style={buttonStyle}>
+        LOGIN
       </button>
       <Modal
         aria-labelledby="spring-modal-title"

@@ -6,7 +6,7 @@ export const Login=()=>{
     const paperStyle={padding: '30px 20px', width:300, margin:'20px auto'}
     const headerStyle={margin:0}
     const avatarStyle={backgroundColor:'#77D47D'}
-    const submitStyle={backgroundColor: '#77D47D'}
+    const submitStyle={backgroundColor: '#77D47D', marginTop:10}
     function handleSubmit(e) {
         e.preventDefualt()
         alert('Thank you for submitting the form')

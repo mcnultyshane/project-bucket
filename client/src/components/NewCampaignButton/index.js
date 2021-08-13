@@ -55,6 +55,7 @@ function NewCampaignButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,8 +67,8 @@ function NewCampaignButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        New Campaign
+      <button type="button" onClick={handleOpen} style={buttonStyle}>
+        NEW CAMPAIGN
       </button>
       <Modal
         aria-labelledby="spring-modal-title"
