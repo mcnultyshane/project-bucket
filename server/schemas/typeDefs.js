@@ -20,10 +20,10 @@ const typeDefs = gql`
     coordinates: String
   }
 
-  type BucketList {
-    _id: ID!
-    campaigns: [Campaign]
-  }
+  # type BucketList {
+  #  _id: ID!
+  #  campaigns: [Campaign]
+  #}
 
   type Campaign {
     _id: ID!
