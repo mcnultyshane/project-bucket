@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Campaign } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -26,9 +26,12 @@ const resolvers = {
     },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, args) => {
+      console.log(args)
+      const user = await User.create(args);
+      console.log(user)
       const token = signToken(user);
+      console.log(token)
       return { token, user };
     },
     
@@ -58,6 +61,17 @@ const resolvers = {
       return { token, user };
     },
 
+    // do we need a user context if block to be logged in?
+    addCampaign: async (parent, { title, description, fundsNeeded }, context) => {
+      const campaign = await Campaign.create({
+        title, 
+        description,
+        fundsNeeded
+        
+      });
+      return campaign;
+    },
+    
   },
 };
 

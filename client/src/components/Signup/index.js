@@ -15,29 +15,41 @@ import {
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 
 export default function Signup() {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ firstName: "", lastName: "", username: "", email: "", password: "" });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        email: formState.email,
-        password: formState.password,
+    console.log("HELLLLO", formState)
+    
+
+    try {
+    const { data } = await addUser({
+      variables: { ...formState
       },
     });
-    const token = mutationResponse.data.addUser.token;
+    console.log(data)
+    const token = data.addUser.token;
     Auth.login(token);
-  };
+    } catch (error) {
+    console.error(error);
+  }
+  }
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
     });
+
+  // setFormState({
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  // });
   };
+  
 
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
@@ -55,7 +67,7 @@ export default function Signup() {
             Please fill out this form to create an account
           </Typography>
         </Grid>
-        <FormControl onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <TextField
             onChange={handleChange}
             name="firstName"
@@ -98,7 +110,7 @@ export default function Signup() {
           >
             Sign Up
           </Button>
-        </FormControl>
+        </form>
       </Paper>
     </Grid>
   );
