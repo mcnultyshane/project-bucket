@@ -1,5 +1,4 @@
-package-lock
-.DS_Store
+
 # Logs
 logs
 *.log
@@ -106,5 +105,5 @@ dist
 .tern-port
 
 # misc
-
-.package-lock.json
+package-lock.json
+.DS_Store
