@@ -8,9 +8,10 @@ const typeDefs = gql`
     email: String
     username: String
     password: String
+    avatar: String
     bucketList: [BucketList]
     location: [Location]
-    avatar: String
+    
   }
 
   type Location {
@@ -79,6 +80,7 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
+      avatar: String
     ): Auth
     updateUser(
       firstName: String
