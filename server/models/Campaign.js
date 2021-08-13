@@ -33,7 +33,6 @@ const campaignSchema = new Schema({
         type: Date,
 
       },
-
     isComplete: {
         type: Boolean,
         default: false
