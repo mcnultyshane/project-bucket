@@ -1,3 +1,5 @@
+package-lock.json
+
 # Logs
 logs
 *.log
@@ -104,5 +106,3 @@ dist
 .tern-port
 
 # misc
-
-.package-lock.json
