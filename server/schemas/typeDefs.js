@@ -3,10 +3,10 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type User {
     _id: ID!
-    email: String
-    username: String
     firstName: String
     lastName: String
+    email: String
+    username: String
     password: String
     bucketList: [BucketList]
     location: [Location]
@@ -16,7 +16,7 @@ const typeDefs = gql`
   type Location {
     _id: ID!
     address: String
-    coodinates: String
+    coordinates: String
   }
 
   type BucketList {
@@ -28,7 +28,7 @@ const typeDefs = gql`
     _id: ID!
     title: String
     description: String
-    contributers: [User]
+    contributors: [User]
     updates: [Update]
     dateCreated: String
     dateCompleted: String
@@ -49,7 +49,7 @@ const typeDefs = gql`
   # input campaignDetails {
   #   title: String
   #   description: String
-  #   contributers: [User]
+  #   contributors: [User]
   #   updates: [Update]
   #   dateCreated: String
   #   dateCompleted: String
@@ -74,9 +74,9 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(
-      username: String!
       firstName: String!
       lastName: String!
+      username: String!
       email: String!
       password: String!
     ): Auth
