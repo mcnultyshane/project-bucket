@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
-import { NewCampaign } from './newcampaign';
+import { NewCampaign } from '../NewCampaign';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -55,6 +55,7 @@ function NewCampaignButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,8 +67,8 @@ function NewCampaignButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        New Campaign
+      <button type="button" onClick={handleOpen} style={buttonStyle}>
+        NEW CAMPAIGN
       </button>
       <Modal
         aria-labelledby="spring-modal-title"
