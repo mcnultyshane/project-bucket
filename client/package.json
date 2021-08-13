@@ -20,11 +20,11 @@
     "web-vitals": "^1.1.2"
   },
   "peerDependencies": {
-		"react": "^16.x",
-		"react-dom": "^16.x",
-		"styled-components": "^5.x",
-		"react-spring": "^8.x"
-	},
+    "react": "^16.x",
+    "react-dom": "^16.x",
+    "styled-components": "^5.x",
+    "react-spring": "^8.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

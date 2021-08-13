@@ -18,7 +18,6 @@ const campaignSchema = new Schema({
             ref: 'User'
         }
     ],
-
     updates: [
         {
             type: String,
@@ -29,15 +28,15 @@ const campaignSchema = new Schema({
         type: Date,
         default: Date.now
       },
+
     dateCompleted: {
         type: Date,
-
       },
+
     isComplete: {
         type: Boolean,
         default: false
       },
-
     location: [
         {
           type: Schema.Types.ObjectId,
