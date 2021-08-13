@@ -3,10 +3,10 @@ const { Schema, model } = require("mongoose");
 
 const bucketListSchema = new Schema({
 
-  buckets: [
+  campaigns: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Bucket',
+      ref: 'Campaign',
     },
   ],
 });
