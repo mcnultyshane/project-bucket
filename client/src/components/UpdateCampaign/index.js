@@ -2,18 +2,17 @@ import React from "react";
 import {
   Grid,
   Paper,
-  Avatar,
   Typography,
   TextField,
   Button,
 } from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -53,7 +52,6 @@ export const UpdateCampaign = () => {
   const handleChange = (event) => {
     setCampaign(event.target.value);
   };
-
 
   return (
     <Grid align="center" style={gridStyle}>
@@ -95,6 +93,7 @@ export const UpdateCampaign = () => {
             rows={4}
             variant="outlined"
           />
+
           <Button
             id="updateCampaignSubmit"
             align="center"
@@ -108,4 +107,4 @@ export const UpdateCampaign = () => {
       </Paper>
     </Grid>
   );
-};
+}

@@ -1,0 +1,106 @@
+[
+    {
+      "username": "sir_richard",
+      "email": "sirrichard@email.com",
+      "password": "virginityROCKS",
+      "firstName": "Richard",
+      "lastName": "Branson",
+      "avatar": "./avatarImages/Richard-Branson-GettyImages.jpg.webp"
+    },
+    {
+        "username": "coco",
+        "email": "coco@email.com",
+        "password": "cocoROCKS",
+        "firstName": "Conan",
+        "lastName": "O Brian",
+        "avatar": "./avatarImages/conan.jpg.webp"
+    },
+    {
+        "username": "katnip",
+        "email": "katnip@email.com",
+        "password": "arrowsROCKS",
+        "firstName": "Katniss",
+        "lastName": "Everdeen",
+        "avatar": "./avatarImages/katniss.jpg"
+    },
+    {
+        "username": "magic_man",
+        "email": "magicman@email.com",
+        "password": "magicROCKS",
+        "firstName": "David",
+        "lastName": "Blaine",
+        "avatar": "./avatarImages/davidblaine.jpeg"
+    },
+    {
+        "username": "thee_zuck",
+        "email": "theezuck@email.com",
+        "password": "facebookROCKS",
+        "firstName": "Mark",
+        "lastName": "Zuckerberg",
+        "avatar": "./avatarImages/zuckerberg.jpg"
+    },
+    {
+        "username": "ice_man",
+        "email": "iceman@email.com",
+        "password": "iceROCKS",
+        "firstName": "Wim",
+        "lastName": "Hof",
+        "avatar": "./avatarImages/wimhof.jpg"
+    },
+    {
+        "username": "goggins",
+        "email": "goggins@email.com",
+        "password": "painROCKS",
+        "firstName": "David",
+        "lastName": "Goggins",
+        "avatar": "./avatarImages/goggins.jpg"
+    },
+    {
+        "username": "chief_chirpa",
+        "email": "chiefchirpa@email.com",
+        "password": "ewoksROCKS",
+        "firstName": "Chief",
+        "lastName": "Chirpa",
+        "avatar": "./avatarImages/Chirpa.jpg"
+    },
+    {
+        "username": "the_creator",
+        "email": "thecreator@email.com",
+        "password": "starwarsROCKS",
+        "firstName": "George",
+        "lastName": "Lucas",
+        "avatar": "./avatarImages/george_lucas.jpg"
+    },
+    {
+        "username": "wanheda",
+        "email": "wanheda@email.com",
+        "password": "earthROCKS",
+        "firstName": "Clark",
+        "lastName": "Griffin",
+        "avatar": "./avatarImages/clark.jpg"
+    },
+    {
+        "username": "binks_boy",
+        "email": "binksboy@email.com",
+        "password": "jarjarROCKS",
+        "firstName": "JarJar",
+        "lastName": "Binks",
+        "avatar": "./avatarImages/jar_jar.jpg"
+    },
+    {
+        "username": "delores",
+        "email": "delores@email.com",
+        "password": "robotsROCK",
+        "firstName": "Delores",
+        "lastName": "Abernathy",
+        "avatar": "./avatarImages/delores.jpg"
+    },
+    {
+        "username": "the_princess",
+        "email": "princess@email.com",
+        "password": "hanROCKS",
+        "firstName": "Leia",
+        "lastName": "Organa",
+        "avatar": "./avatarImages/leia.jpg"
+    }
+  ]
