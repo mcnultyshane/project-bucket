@@ -4,7 +4,7 @@ const {
 } = require("mongoose");
 const bcrypt = require("bcrypt");
 const location = require("./Location");
-const bucketList = require("./BucketList");
+const campaign = require("./Campaign");
 
 const userSchema = new Schema({
     username: {
@@ -35,7 +35,7 @@ const userSchema = new Schema({
     avatar: {
         type: String
     },
-    bucketList: [bucketList.schema],
+    campaign: [campaign.schema],
     location: [location.schema],
 
 });
