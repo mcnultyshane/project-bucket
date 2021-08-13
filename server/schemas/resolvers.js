@@ -17,6 +17,12 @@ const resolvers = {
         }
         throw new AuthenticationError("You need to be logged in!");
       },
+      getCampaigns: async () => {
+        return Campaign.find();
+      },
+      getSingleCampaign: async (parent, { _id }) => {
+        return Campaign.findOne({ _id });
+      },
     },
 
   Mutation: {
