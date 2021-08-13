@@ -69,15 +69,17 @@ const resolvers = {
       return campaign;
     },
     
-    updateCampaign: async (parent, {_id, updates
+    updateCampaign: async (parent, {campaignId, content
       // , dateCompleted, isComplete, fundsNeeded
     }) => {
-      return await Campaign.findByIdAndUpdate(_id, {
-        updates,
-        // dateCompleted,
-        // isComplete,
-        // fundsNeeded
-      }, {new: true});
+      return Campaign.findByIdAndUpdate(
+        {_id: campaignId},
+        {
+          $push: { updates: {
+            content
+          } }
+        }
+      , {new: true});
     }
   },
 };

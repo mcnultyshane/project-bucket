@@ -42,7 +42,7 @@ const typeDefs = gql`
     _id: ID
     content: String
     dateCreated: String
-    author: User!
+    # author: User!
     # lastUpdated: String
   }
 
@@ -88,7 +88,7 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addCampaign(title: String!, description: String!, fundsNeeded: Float): Campaign
-    updateCampaign(updates: [String]): Campaign
+    updateCampaign(campaignId: ID, content: String): Campaign
   }
 `;
 
