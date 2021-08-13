@@ -88,6 +88,7 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addCampaign(title: String!, description: String!, fundsNeeded: Float): Campaign
+    updateCampaign(updates: [String]): Campaign
   }
 `;
 
