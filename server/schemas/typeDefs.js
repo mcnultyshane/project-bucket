@@ -8,9 +8,10 @@ const typeDefs = gql`
     email: String
     username: String
     password: String
+    avatar: String
     bucketList: [BucketList]
     location: [Location]
-    avatar: String
+    
   }
 
   type Location {
@@ -42,7 +43,7 @@ const typeDefs = gql`
     _id: ID
     content: String
     dateCreated: String
-    author: User!
+    # author: User!
     # lastUpdated: String
   }
 
@@ -79,6 +80,7 @@ const typeDefs = gql`
       username: String!
       email: String!
       password: String!
+      avatar: String
     ): Auth
     updateUser(
       firstName: String
@@ -88,6 +90,7 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addCampaign(title: String!, description: String!, fundsNeeded: Float): Campaign
+    updateCampaign(campaignId: ID, content: String): Campaign
   }
 `;
 

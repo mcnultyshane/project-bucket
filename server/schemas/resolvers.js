@@ -72,6 +72,18 @@ const resolvers = {
       return campaign;
     },
     
+    updateCampaign: async (parent, {campaignId, content
+      // , dateCompleted, isComplete, fundsNeeded
+    }) => {
+      return Campaign.findByIdAndUpdate(
+        {_id: campaignId},
+        {
+          $push: { updates: {
+            content
+          } }
+        }
+      , {new: true});
+    }
   },
 };
 
