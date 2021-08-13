@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
-import { Login } from '../Login';
+import { UpdateCampaign } from "../UpdateCampaign"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -51,7 +51,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-function LoginButton() {
+function UpdateCampaignButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -68,7 +68,7 @@ function LoginButton() {
   return (
     <div>
       <button type="button" onClick={handleOpen} style={buttonStyle}>
-        LOGIN
+        UPDATE CAMPAIGN
       </button>
       <Modal
         aria-labelledby="spring-modal-title"
@@ -85,11 +85,11 @@ function LoginButton() {
         <Fade in={open}>
           <div className={classes.paper}>
             {/* <h2 id="spring-modal-title">Sign Up</h2> */}
-            <Login />
+            <UpdateCampaign />
           </div>
         </Fade>
       </Modal>
     </div>
   );
 }
-export { LoginButton };
+export { UpdateCampaignButton };
