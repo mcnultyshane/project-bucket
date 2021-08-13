@@ -9,9 +9,8 @@ const typeDefs = gql`
     username: String
     password: String
     avatar: String
-    bucketList: [BucketList]
+    bucketList: [Campaign]
     location: [Location]
-    
   }
 
   type Location {
@@ -20,10 +19,10 @@ const typeDefs = gql`
     coordinates: String
   }
 
-  type BucketList {
-    _id: ID!
-    campaigns: [Campaign]
-  }
+  # type BucketList {
+  #  _id: ID!
+  #  campaigns: [Campaign]
+  #}
 
   type Campaign {
     _id: ID!
@@ -50,8 +49,6 @@ const typeDefs = gql`
   # input campaignDetails {
   #   title: String
   #   description: String
-  #   contributors: [User]
-  #   updates: [Update]
   #   dateCreated: String
   #   dateCompleted: String
   #   isComplete: Boolean
@@ -68,7 +65,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     getSingleUser(username: String!): User
-    getCampaigns: [Campaign]
+    getCampaigns(username: String): [Campaign]
     getSingleCampaign(id: ID!): Campaign
     me: User
   }
@@ -89,7 +86,11 @@ const typeDefs = gql`
       password: String
     ): User
     login(email: String!, password: String!): Auth
-    addCampaign(title: String!, description: String!, fundsNeeded: Float): Campaign
+    addCampaign(
+      title: String!
+      description: String!
+      fundsNeeded: Float
+    ): User
     updateCampaign(campaignId: ID, content: String): Campaign
   }
 `;
