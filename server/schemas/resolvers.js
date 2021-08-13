@@ -59,10 +59,11 @@ const resolvers = {
     },
 
     // do we need a user context if block to be logged in?
-    addCampaign: async (parent, { title, description }, context) => {
+    addCampaign: async (parent, { title, description, fundsNeeded }, context) => {
       const campaign = await Campaign.create({
         title, 
         description,
+        fundsNeeded
         
       });
       return campaign;
