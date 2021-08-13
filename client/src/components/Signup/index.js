@@ -21,13 +21,13 @@ export default function Signup() {
                 <Typography variant='caption'>Please fill out this form to create an account</Typography>
                 </Grid>
                 <form>
-                    <TextField fullWidth label='First Name'/>
-                    <TextField fullWidth label='Last Name'/>
-                    <TextField fullWidth label='Username'/>
-                    <TextField fullWidth label='Email'/>
-                    <TextField fullWidth label='Password'/>
-                    <TextField fullWidth label='Confirm Password'/>
-                    <Button align='center' type='submit' variant='contained' style={submitStyle} >Sign Up</Button>
+                    <TextField id='signupFirst' fullWidth label='First Name'/>
+                    <TextField id='signupLast' fullWidth label='Last Name'/>
+                    <TextField id='signupUser' fullWidth label='Username'/>
+                    <TextField id='signupEmail' fullWidth label='Email'/>
+                    <TextField id='signupPass' fullWidth label='Password'/>
+                    <TextField id='signupConfPass' fullWidth label='Confirm Password'/>
+                    <Button id='signupSubmit' align='center' type='submit' variant='contained' style={submitStyle} >Sign Up</Button>
                 </form>
             </Paper>
         </Grid>

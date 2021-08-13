@@ -1,18 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 
-const bucketSchema = new Schema({
-  name: {
-    type: String,
-  },
-  campaign: [
+const bucketListSchema = new Schema({
+
+  campaigns: [
     {
-      type: Schema.Type.ObjectId,
-      ref: Campaign,
+      type: Schema.Types.ObjectId,
+      ref: 'Campaign',
     },
   ],
 });
 
-const BucketList = model("BucketList", bucketSchema);
+const BucketList = model("BucketList", bucketListSchema);
 
-module.export = BucketList;
+module.exports = BucketList;

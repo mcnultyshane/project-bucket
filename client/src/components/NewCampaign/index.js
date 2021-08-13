@@ -43,27 +43,30 @@ export default function NewCampaign() {
         </Grid>
         <form>
           <TextField
+            id='newCampaignTitle'
             fullWidth
             style={textInputStyle}
             label="Campaign Title"
             variant="outlined"
           />
           <TextField
+            id='newCampaignDescription'
             style={textInputStyle}
             fullWidth
-            id="campaignDescription"
             label="Description"
             multiline
             rows={4}
             variant="outlined"
           />
           <TextField
+            id='newCampaignFunds'
             fullWidth
             style={textInputStyle}
             label="Funds Needed"
             variant="outlined"
           />
           <TextField
+            id='newCampaignLocation'
             fullWidth
             style={textInputStyle}
             label="Location"
@@ -71,6 +74,7 @@ export default function NewCampaign() {
           />
           <form className={classes.container} noValidate>
             <TextField
+              id='newCampaignDate'
               style={textInputStyle}
               id="date"
               label="Timeframe"
@@ -84,6 +88,7 @@ export default function NewCampaign() {
           </form>
 
           <Button
+            id='newCampaignSubmit'
             align="center"
             type="submit"
             variant="contained"
