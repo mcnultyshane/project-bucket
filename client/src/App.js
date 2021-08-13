@@ -11,7 +11,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import CampaignList from "./pages/CampaignList";
 import Profile from "./pages/Profile"
-import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
 
 const httpLink = createHttpLink({
@@ -38,9 +38,15 @@ const client = new ApolloClient({
 const theme = createTheme({
   type: dark,
   palette: {
-    lightGreen: "#B4EFB8",
-    darkGreen: "#77D47D",
-    gray: "#666b6c",
+    primary: {
+      main: "#B4EFB8",
+    },
+    secondary: {
+      main: "#77D47D",
+    },
+    gray: {
+      main: "#666b6c",
+    }, 
     black: "#000000",
   },
 });
@@ -49,8 +55,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div style={{ backgroundColor: "#000000", height: '100vh' }}>
-          <Navbar theme={theme} />
+        <ThemeProvider theme={theme}>
+        <div style={{ backgroundColor: '#282c34', height: '100vh', margin: 0 }}>
+          <Navbar />
 
           <Switch>
             <Route exact path="/" component={Home}/>
@@ -60,6 +67,7 @@ function App() {
           </Switch>
 
         </div>
+        </ThemeProvider>
       </Router>
     </ApolloProvider>
   );

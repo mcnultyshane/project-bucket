@@ -2,7 +2,10 @@ import React from 'react';
 import { Grid, Paper, Avatar, Typography, TextField, Button } from '@material-ui/core';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
-export const Signup=()=>{
+export default function Signup() {
+
+
+    
     const paperStyle={padding: '30px 20px', width:300, margin:'20px auto'}
     const headerStyle={margin:0}
     const avatarStyle={backgroundColor:'#77D47D'}

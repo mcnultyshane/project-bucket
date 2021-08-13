@@ -10,7 +10,7 @@ import {
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { makeStyles } from '@material-ui/core/styles';
 
-export const NewCampaign = () => {
+export default function NewCampaign() {
   const useStyles = makeStyles((theme) => ({
     container: {
       display: 'flex',

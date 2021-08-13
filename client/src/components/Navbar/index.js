@@ -9,12 +9,13 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListAltTwoToneIcon from "@material-ui/icons/ListAltTwoTone";
 import HomeTwoTone from "@material-ui/icons/HomeTwoTone";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { Button, ButtonGroup, Modal } from "@material-ui/core";
+import Signup from '../Signup'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -88,6 +89,9 @@ export default function Navbar({ theme }) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -102,6 +106,17 @@ export default function Navbar({ theme }) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  // const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -113,11 +128,13 @@ export default function Navbar({ theme }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
+        My Profile
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </Menu>
   );
-// MOBILE VIEW MENU vvvvvvvvv
+  // MOBILE VIEW MENU vvvvvvvvv
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -145,15 +162,20 @@ export default function Navbar({ theme }) {
         </IconButton>
         <p>Bucket List</p>
       </MenuItem>
-      <MenuItem component={Link} to="/profile">
-        <IconButton>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
-// DESKTOP MENU vvvvvvvvv
+  // DESKTOP MENU vvvvvvvvv
   return (
     <div className={classes.grow}>
       <AppBar
@@ -190,13 +212,26 @@ export default function Navbar({ theme }) {
               aria-label="show new campaigns"
               color="inherit"
             >
-              <Badge badgeContent={2} color="secondary">
+              <Badge badgeContent={2} color="primary">
                 <ListAltTwoToneIcon />
               </Badge>
             </IconButton>
-            <IconButton component={Link} to="/profile">
+            <IconButton onClick={handleProfileMenuOpen}>
               <AccountCircle />
             </IconButton>
+            <ButtonGroup variant="contained" color="secondary">
+            <Button>Log In</Button>
+              <Button onClick={handleOpen}>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description">
+                  <Signup />
+                </Modal>
+                 Sign Up
+              </Button>
+            </ButtonGroup>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
