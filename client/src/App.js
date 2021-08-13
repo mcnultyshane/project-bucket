@@ -13,6 +13,12 @@ import CampaignList from "./pages/CampaignList";
 import Profile from "./pages/Profile"
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
+import { UpdateCampaign } from "./components/UpdateCampaign";
+import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
+import { NewCampaignButton } from "./components/NewCampaignButton";
+import { LoginButton } from "./components/LoginButton";
+import { SignupButton } from "./components/SignupButton";
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -66,6 +72,7 @@ function App() {
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
           {/* <Footer /> */}
+          <NewCampaignButton />
         </div>
         </ThemeProvider>
       </Router>

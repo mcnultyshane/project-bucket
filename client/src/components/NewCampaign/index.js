@@ -27,16 +27,16 @@ export default function NewCampaign() {
   const paperStyle = { padding: "30px 20px", width: 700, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#77D47D" };
-  const submitStyle = { backgroundColor: "#77D47D" };
+  const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
   return (
     <Grid align="center">
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle}>
+          {/* <Avatar style={avatarStyle}>
             <AddCircleOutlineOutlinedIcon />
-          </Avatar>
-          <h2 style={headerStyle}>New Campaign</h2>
+          </Avatar> */}
+          <h2 style={headerStyle}>NEW CAMPAIGN</h2>
           <Typography variant="caption">
             Please fill out this form to create a new campaign
           </Typography>
