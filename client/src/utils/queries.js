@@ -10,8 +10,14 @@ export const QUERY_USERS = gql`
       lastName
       password
       bucketList {
-        buckets {
-          name
+        campaign {
+          title
+          description
+          updates{
+            content
+            dateCreated
+          }
+          dateCreated
         }
       }
       location {
