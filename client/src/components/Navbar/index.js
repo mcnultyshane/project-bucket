@@ -36,17 +36,6 @@ export default function Navbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -60,26 +49,20 @@ export default function Navbar() {
     >
       {Auth.loggedIn() ? (
         <>
-        <MenuItem> Log In </MenuItem>
-        <MenuItem onClick={handleOpen}>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          <SignupButton />
-        </Modal>
-        Sign Up
-        </MenuItem>
-        </>
-      ): (
-        <>
       <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
         My Profile
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+      <MenuItem onClick={Auth.logout}>Log Out</MenuItem>
       </>
+      ) : (
+        <>
+        <MenuItem> 
+          <LoginButton />
+           </MenuItem>
+        <MenuItem >
+          <SignupButton />
+        </MenuItem>
+        </>
       )}
     </Menu>
   );
@@ -173,13 +156,6 @@ export default function Navbar() {
               <Button>
                 <LoginButton />
               </Button>
-              {/* <Button onClick={handleOpen}>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                > */}
                 <Button>
                   <SignupButton />
             
