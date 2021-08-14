@@ -46,6 +46,8 @@ const typeDefs = gql`
     # lastUpdated: String
   }
 
+
+
   # input campaignDetails {
   #   title: String
   #   description: String
