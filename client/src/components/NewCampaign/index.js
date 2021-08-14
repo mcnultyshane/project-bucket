@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Paper,
-  Avatar,
   Typography,
   TextField,
   Button,
 } from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { makeStyles } from '@material-ui/core/styles';
+import { ADD_CAMPAIGN } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+
+
+
 
 export default function NewCampaign() {
+
+
+    const [formState, setFormState] = useState({ title: "", description: "", fundsNeeded: ""})
+
+
+
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    }
+
+
   const useStyles = makeStyles((theme) => ({
     container: {
       display: 'flex',
@@ -26,31 +45,29 @@ export default function NewCampaign() {
   const classes = useStyles();
   const paperStyle = { padding: "30px 20px", width: 700, margin: "20px auto" };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#77D47D" };
   const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
   return (
     <Grid align="center">
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
-          {/* <Avatar style={avatarStyle}>
-            <AddCircleOutlineOutlinedIcon />
-          </Avatar> */}
           <h2 style={headerStyle}>NEW CAMPAIGN</h2>
           <Typography variant="caption">
             Please fill out this form to create a new campaign
           </Typography>
         </Grid>
-        <form>
+        <form onSubmit = {handleFormSubmit}>
           <TextField
-            id='newCampaignTitle'
-            fullWidth
-            style={textInputStyle}
-            label="Campaign Title"
+             name = "title"
+             onChange = {handleChange}
+             fullWidth
+             style={textInputStyle}
+             label="Campaign Title"
             variant="outlined"
-          />
+            />
           <TextField
-            id='newCampaignDescription'
+            name = "description"
+            onChange = {handleChange}
             style={textInputStyle}
             fullWidth
             label="Description"
@@ -59,14 +76,15 @@ export default function NewCampaign() {
             variant="outlined"
           />
           <TextField
-            id='newCampaignFunds'
+            name = "fundsNeeded"
+            onChange = {handleChange}
             fullWidth
             style={textInputStyle}
             label="Funds Needed"
             variant="outlined"
           />
           <TextField
-            id='newCampaignLocation'
+            name = "location"
             fullWidth
             style={textInputStyle}
             label="Location"
@@ -74,8 +92,8 @@ export default function NewCampaign() {
           />
           <form className={classes.container} noValidate>
             <TextField
-              id='newCampaignDate'
               style={textInputStyle}
+              onChange = {handleChange}
               id="date"
               label="Timeframe"
               type="date"
