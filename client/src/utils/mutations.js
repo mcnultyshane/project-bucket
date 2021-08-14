@@ -37,24 +37,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CAMPAIGN = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-    ) {
-      token
-      user {
-        _id
-      }
+mutation addCampaign ($userId: ID!, $bucketList: [String]) {
+  addCampaign(userId: $userId, bucketList: $bucketList  ){
+    username
+    bucketList {
+      title
+      description
+      fundsNeeded
     }
   }
+}
 `;
 
 export const CAMPAIGN_UPDATE = gql`
