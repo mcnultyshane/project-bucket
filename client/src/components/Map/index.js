@@ -4,7 +4,8 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import RoomIcon from "@material-ui/icons/Room";
 import axios from "axios";
 
-export default function Map() {
+export default function Map({ user }) {
+  console.log(user)
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
