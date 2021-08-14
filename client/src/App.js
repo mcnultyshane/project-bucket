@@ -13,7 +13,7 @@ import CampaignList from "./pages/CampaignList";
 import Profile from "./pages/Profile"
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
-import { UserContext } from "./utils/UserContext";
+import UserProvider from "./utils/UserContext";
 // import { UpdateCampaign } from "./components/UpdateCampaign";
 // import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
 // import { NewCampaignButton } from "./components/NewCampaignButton";
@@ -64,7 +64,7 @@ function App() {
       <Router>
         <ThemeProvider theme={theme}>
         <div style={{ backgroundColor: '#282c34', height: '100vh', margin: 0 }}>
-          <UserContext.Provider>
+          <UserProvider>
           <Navbar />
 
           <Switch>
@@ -74,7 +74,7 @@ function App() {
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
           {/* <Footer /> */}
-          </UserContext.Provider>
+          </UserProvider>
         </div>
         </ThemeProvider>
       </Router>

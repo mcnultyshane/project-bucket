@@ -60,9 +60,9 @@ export default function Profile() {
       alignItems="center"
       spacing={3}
     >
-      <Button endIcon={<PostAddIcon />} variant="contained" color="secondary">
+
       <NewCampaignButton />
-      </Button>
+
     {/* <h1>{user.username}</h1> */}
     <CampaignCard campaigns={campaigns}
     // userId={user._id} 
