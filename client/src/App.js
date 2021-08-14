@@ -13,11 +13,12 @@ import CampaignList from "./pages/CampaignList";
 import Profile from "./pages/Profile"
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
-import { UpdateCampaign } from "./components/UpdateCampaign";
-import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
-import { NewCampaignButton } from "./components/NewCampaignButton";
-import { LoginButton } from "./components/LoginButton";
-import { SignupButton } from "./components/SignupButton";
+import { UserContext } from "./utils/UserContext";
+// import { UpdateCampaign } from "./components/UpdateCampaign";
+// import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
+// import { NewCampaignButton } from "./components/NewCampaignButton";
+// import { LoginButton } from "./components/LoginButton";
+// import { SignupButton } from "./components/SignupButton";
 
 
 const httpLink = createHttpLink({
@@ -63,6 +64,7 @@ function App() {
       <Router>
         <ThemeProvider theme={theme}>
         <div style={{ backgroundColor: '#282c34', height: '100vh', margin: 0 }}>
+          <UserContext.Provider>
           <Navbar />
 
           <Switch>
@@ -72,6 +74,7 @@ function App() {
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
           {/* <Footer /> */}
+          </UserContext.Provider>
         </div>
         </ThemeProvider>
       </Router>

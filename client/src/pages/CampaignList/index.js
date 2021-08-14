@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,13 +20,12 @@ export default function CampaignList() {
       alignItems="center"
       spacing={3}
     >
-      <Button endIcon={<PostAddIcon />} variant="contained" color="secondary">
       <NewCampaignButton />
-      </Button>
-      {testArray.map((item) => {
+      
+      {testArray.map((item, index) => {
           return (
             
-        <Grid item xs={6} spacing={2} style={{minWidth: '50%', marginTop: '15px', backgroundColor: '#282c34', borderRadius: '20px'}}>
+        <Grid item xs={6} key={index} style={{minWidth: '50%', marginTop: '15px', backgroundColor: '#282c34', borderRadius: '20px'}}>
           <Card style={{backgroundColor: 'gray', color: 'white'}}>
             <CardContent>
               <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>

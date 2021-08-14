@@ -7,7 +7,6 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function NewCampaign() {
@@ -72,7 +71,7 @@ export default function NewCampaign() {
             label="Location"
             variant="outlined"
           />
-          <form className={classes.container} noValidate>
+          <div className={classes.container} noValidate>
             <TextField
               id='newCampaignDate'
               style={textInputStyle}
@@ -85,7 +84,8 @@ export default function NewCampaign() {
                 shrink: true,
               }}
             />
-          </form>
+            </div>
+          {/* </form> */}
 
           <Button
             id='newCampaignSubmit'

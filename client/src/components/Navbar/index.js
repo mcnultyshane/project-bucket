@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, Button, ButtonGroup, Modal } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, Button, ButtonGroup } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListAltTwoToneIcon from "@material-ui/icons/ListAltTwoTone";
@@ -15,6 +15,7 @@ export default function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -47,6 +48,7 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      <div>
       {Auth.loggedIn() ? (
         <>
       <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
@@ -64,6 +66,7 @@ export default function Navbar() {
         </MenuItem>
         </>
       )}
+      </div>
     </Menu>
   );
   // MOBILE VIEW MENU vvvvvvvvv
@@ -78,6 +81,7 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <div>
       <MenuItem component={Link} to="/">
         <IconButton aria-label="show map" color="inherit">
           <Badge color="primary">
@@ -105,6 +109,7 @@ export default function Navbar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      </div>
     </Menu>
   );
   // DESKTOP MENU vvvvvvvvv
