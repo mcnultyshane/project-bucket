@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
 //   onExited: PropTypes.func,
 // };
 
-function NewCampaignButton() {
- 
+function NewCampaignButton(props) {
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
@@ -85,7 +85,7 @@ function NewCampaignButton() {
         {/* <Fade in={open}> */}
           <div className={classes.paper}>
             {/* <h2 id="spring-modal-title">Sign Up</h2> */}
-            <NewCampaign />
+            <NewCampaign userId={props.userId}/>
           </div>
         {/* </Fade> */}
       </Modal>

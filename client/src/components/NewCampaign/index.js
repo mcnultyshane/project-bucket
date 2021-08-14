@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import { ADD_CAMPAIGN } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import Auth from '../../utils/auth';
 import {
   Grid,
   Paper,
-  Avatar,
   Typography,
   TextField,
   Button,
 } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
 
-export default function NewCampaign() {
-  const useStyles = makeStyles((theme) => ({
+
+
+ const NewCampaign = ({ userId }) => {
+   
+   const [title, setTitle] = useState('');
+   const [description, setDescription] = useState('');
+   const [fundsNeeded, setFundsNeeded] = useState('');
+
+   const [addBucketList, { error }] = useMutation(ADD_CAMPAIGN);
+
+
+   const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const data = await addBucketList({
+        variables: { userId, title, description, fundsNeeded },
+      });
+
+      setTitle('');
+      setDescription('');
+      setFundsNeeded('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+    // const [formState, setFormState] = useState({ title: "", description: "", fundsNeeded: ""})
+
+    // const handleChange = (event) => {
+    //   const { name, value } = event.target;
+    //   setFormState({
+    //     ...formState,
+    //     [name]: value,
+    //   });
+    // }
+   const useStyles = makeStyles((theme) => ({
     container: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -25,32 +61,33 @@ export default function NewCampaign() {
   const classes = useStyles();
   const paperStyle = { padding: "30px 20px", width: 700, margin: "20px auto" };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#77D47D" };
   const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
   return (
+
+
     <Grid align="center">
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
-          {/* <Avatar style={avatarStyle}>
-            <AddCircleOutlineOutlinedIcon />
-          </Avatar> */}
           <h2 style={headerStyle}>NEW CAMPAIGN</h2>
           <Typography variant="caption">
             Please fill out this form to create a new campaign
           </Typography>
         </Grid>
-        <form>
+        {Auth.loggedIn() ? (
+        <form onSubmit = {handleFormSubmit}>
           <TextField
-            id='newCampaignTitle'
-            fullWidth
-            style={textInputStyle}
-            label="Campaign Title"
+             value={title}
+             onChange = {(event) => setTitle(event.target.value)}
+             fullWidth
+             style={textInputStyle}
+             label="Campaign Title"
             variant="outlined"
-          />
+            />
           <TextField
-            id='newCampaignDescription'
-            style={textInputStyle}
+            name = "description"
+            value={description}
+            onChange = {(event) => setDescription(event.target.value)}
             fullWidth
             label="Description"
             multiline
@@ -58,14 +95,15 @@ export default function NewCampaign() {
             variant="outlined"
           />
           <TextField
-            id='newCampaignFunds'
+             value={fundsNeeded}
+             onChange = {(event) => setFundsNeeded(event.target.value)}
             fullWidth
             style={textInputStyle}
             label="Funds Needed"
             variant="outlined"
           />
           <TextField
-            id='newCampaignLocation'
+            name = "location"
             fullWidth
             style={textInputStyle}
             label="Location"
@@ -73,7 +111,6 @@ export default function NewCampaign() {
           />
           <div className={classes.container} noValidate>
             <TextField
-              id='newCampaignDate'
               style={textInputStyle}
               id="date"
               label="Timeframe"
@@ -97,7 +134,12 @@ export default function NewCampaign() {
             Create Campaign
           </Button>
         </form>
+        ) : (
+          <p> You need to be logged in to create a campaign </p>
+        )}
       </Paper>
     </Grid>
   );
 };
+
+export default NewCampaign;
