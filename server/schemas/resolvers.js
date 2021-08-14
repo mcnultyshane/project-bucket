@@ -8,9 +8,10 @@ const resolvers = {
       users: async () => {
         return User.find();
       },
-      getSingleUser: async (parent, { username }) => {
-        return User.findOne({ username });
+      getSingleUser: async (parent, { userId }) => {
+        return User.findOne({ _id: userId });
       },
+      
   
       me: async (parent, args, context) => {
         if (context.user) {
@@ -78,6 +79,7 @@ const resolvers = {
       }
         //throw new AuthenticationError('Not logged in');  
     },
+
     
     updateCampaign: async (parent, {campaignId, content}) => {
       return Campaign.findByIdAndUpdate(
