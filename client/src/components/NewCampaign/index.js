@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import { ADD_CAMPAIGN } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import Auth from '../../utils/auth';
 import {
   Grid,
   Paper,
@@ -6,31 +10,43 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import { ADD_CAMPAIGN } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
 
 
 
+ const NewCampaign = ({ userId }) => {
+   
+   const [title, setTitle] = useState('');
+   const [description, setDescription] = useState('');
+   const [fundsNeeded, setFundsNeeded] = useState('');
 
-export default function NewCampaign() {
+   const [addBucketList, { error }] = useMutation(ADD_CAMPAIGN);
 
 
-    const [formState, setFormState] = useState({ title: "", description: "", fundsNeeded: ""})
+   const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-
-
-
-    const handleChange = (event) => {
-      const { name, value } = event.target;
-      setFormState({
-        ...formState,
-        [name]: value,
+    try {
+      const data = await addBucketList({
+        variables: { userId, title, description, fundsNeeded },
       });
+
+      setTitle('');
+      setDescription('');
+      setFundsNeeded('');
+    } catch (err) {
+      console.error(err);
     }
+  };
+    // const [formState, setFormState] = useState({ title: "", description: "", fundsNeeded: ""})
 
-
-  const useStyles = makeStyles((theme) => ({
+    // const handleChange = (event) => {
+    //   const { name, value } = event.target;
+    //   setFormState({
+    //     ...formState,
+    //     [name]: value,
+    //   });
+    // }
+   const useStyles = makeStyles((theme) => ({
     container: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -48,6 +64,8 @@ export default function NewCampaign() {
   const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
   return (
+
+
     <Grid align="center">
       <Paper elevation={20} style={paperStyle}>
         <Grid align="center">
@@ -56,10 +74,11 @@ export default function NewCampaign() {
             Please fill out this form to create a new campaign
           </Typography>
         </Grid>
+        {Auth.loggedIn() ? (
         <form onSubmit = {handleFormSubmit}>
           <TextField
-             name = "title"
-             onChange = {handleChange}
+             value={title}
+             onChange = {(event) => setTitle(event.target.value)}
              fullWidth
              style={textInputStyle}
              label="Campaign Title"
@@ -67,8 +86,8 @@ export default function NewCampaign() {
             />
           <TextField
             name = "description"
-            onChange = {handleChange}
-            style={textInputStyle}
+            value={description}
+            onChange = {(event) => setDescription(event.target.value)}
             fullWidth
             label="Description"
             multiline
@@ -76,8 +95,8 @@ export default function NewCampaign() {
             variant="outlined"
           />
           <TextField
-            name = "fundsNeeded"
-            onChange = {handleChange}
+             value={fundsNeeded}
+             onChange = {(event) => setFundsNeeded(event.target.value)}
             fullWidth
             style={textInputStyle}
             label="Funds Needed"
@@ -93,7 +112,6 @@ export default function NewCampaign() {
           <div className={classes.container} noValidate>
             <TextField
               style={textInputStyle}
-              onChange = {handleChange}
               id="date"
               label="Timeframe"
               type="date"
@@ -116,7 +134,12 @@ export default function NewCampaign() {
             Create Campaign
           </Button>
         </form>
+        ) : (
+          <p> You need to be logged in to create a campaign </p>
+        )}
       </Paper>
     </Grid>
   );
 };
+
+export default NewCampaign;
