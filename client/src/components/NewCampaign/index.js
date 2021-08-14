@@ -28,6 +28,8 @@ export default function NewCampaign() {
   const avatarStyle = { backgroundColor: "#77D47D" };
   const submitStyle = { backgroundColor: "#77D47D", fontSize:20 };
   const textInputStyle = { marginBottom: "5px", marginTop: "5px" };
+
+  
   return (
     <Grid align="center">
       <Paper elevation={20} style={paperStyle}>
@@ -75,7 +77,6 @@ export default function NewCampaign() {
             <TextField
               id='newCampaignDate'
               style={textInputStyle}
-              id="date"
               label="Timeframe"
               type="date"
               // defaultValue="2021-08-24"

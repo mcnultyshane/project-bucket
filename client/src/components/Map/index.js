@@ -10,7 +10,7 @@ export default function Map() {
     height: "100vh",
     latitude: 37.7577,
     longitude: -90.4376,
-    zoom: 4,
+    zoom: 2,
   });
   const [showPopup, togglePopup] = React.useState(false);
   const [currentPinId, setCurrentPinId] = useState(null);
@@ -52,7 +52,7 @@ export default function Map() {
       {...viewport}
       mapboxApiAccessToken="pk.eyJ1Ijoia3NlZGQiLCJhIjoiY2tzYngxdzVtMDdrMzJvcGNtYmFpdXVieiJ9.oeGFcgwDXXXnsB0FcuLUPw"
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      mapStyle="mapbox://styles/ksedd/cksbxs7mh0lsa18qt69p56kc7"
+      mapStyle="mapbox://styles/ksedd/cksc6kfgo0u8218qt31axgx6p"
     >
         
       {pins.map((p) => (
@@ -65,7 +65,8 @@ export default function Map() {
             offsetTop={-10}
           >
             <RoomIcon
-              style={{ fontSize: viewport.zoom * 5 }}
+            color='primary'
+              style={{ fontSize: viewport.zoom * 10 }}
               onClick={() => handleMarkerClick(p._id)}
             />
           </Marker>
