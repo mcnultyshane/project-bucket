@@ -57,3 +57,15 @@ export const ADD_CAMPAIGN = gql`
   }
 `;
 
+export const CAMPAIGN_UPDATE = gql`
+mutation updateCampaign ($campaignId: ID, $content: String) {
+  updateCampaign(campaignId: $campaignId, content: $content) {
+    _id
+    title
+    updates{
+      _id
+      content
+    }
+  }
+}`
+
