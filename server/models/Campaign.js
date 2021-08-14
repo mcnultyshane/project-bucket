@@ -20,8 +20,16 @@ const campaignSchema = new Schema({
     ],
     updates: [
         {
-            type: String,
-            ref: 'Update'
+          content: {
+              type: String,
+              required: true,
+              minlength: 1,
+              maxlength: 280
+          } , 
+          dateCreated: {
+            type: Date,
+            default: Date.now
+          }
         }
     ],
     dateCreated: {

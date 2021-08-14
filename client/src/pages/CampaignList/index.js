@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, ButtonGroup, Grid, Typography } from "@material-ui/core";
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import { NewCampaignButton } from "../../components/NewCampaignButton";
 
 const testArray = [1, 2, 3, 4, 5];
 
+
+
 export default function CampaignList() {
+
   return (
     <Grid
       container
@@ -16,9 +20,12 @@ export default function CampaignList() {
       alignItems="center"
       spacing={3}
     >
-      {testArray.map((item) => {
+      <NewCampaignButton />
+      
+      {testArray.map((item, index) => {
           return (
-        <Grid item xs={6} spacing={2} style={{minWidth: '50%', marginTop: '15px', backgroundColor: '#000000'}}>
+            
+        <Grid item xs={6} key={index} style={{minWidth: '50%', marginTop: '15px', backgroundColor: '#282c34', borderRadius: '20px'}}>
           <Card style={{backgroundColor: 'gray', color: 'white'}}>
             <CardContent>
               <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
@@ -29,8 +36,10 @@ export default function CampaignList() {
               </Typography>
             </CardContent>
             <CardActions>
+              <ButtonGroup variant="contained" >
               <Button size="small">View Campaign</Button>
               <Button size="small">View User's Profile</Button>
+              </ButtonGroup>
             </CardActions>
           </Card>
         </Grid>

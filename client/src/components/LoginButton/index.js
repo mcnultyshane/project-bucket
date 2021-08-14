@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
+import { Button, Backdrop, Modal } from '@material-ui/core';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
-import { Login } from '../Login';
+import Login from '../Login';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -55,7 +54,6 @@ function LoginButton() {
  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const buttonStyle = {backgroundColor: '#545454', color: 'white', padding:5, borderRadius:5};
 
   const handleOpen = () => {
     setOpen(true);
@@ -67,9 +65,9 @@ function LoginButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen} style={buttonStyle}>
-        LOGIN
-      </button>
+      <Button type="button" onClick={handleOpen}>
+        Login
+      </Button>
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
