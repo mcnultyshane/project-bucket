@@ -27,7 +27,15 @@ export const QUERY_USERS = gql`
   }
 `;
 export const QUERY_SINGLE_USER = gql`
-
+{
+  me {
+  _id
+  username
+  email
+  firstName
+  LastName
+  avatar }
+}
 `;
 export const QUERY_ME = gql`
   {
@@ -38,29 +46,6 @@ export const QUERY_ME = gql`
       firstName
       LastName
       avatar
-      bucketList {
-        campaignId
-        description
-        // contributors {
-//        ****users****
-        // } 
-        updates []
-        dateCreated
-        dateCompleted
-        isComplete
-        location {
-          _id
-          address
-          coordinates
-        }
-        fundsNeeded
-        donations
-      }
-      location {
-        _id
-        address
-        coordinates
-      }
     }
   }
 `;
