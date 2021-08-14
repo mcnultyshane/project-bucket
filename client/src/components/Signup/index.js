@@ -9,26 +9,20 @@ import {
   Typography,
   TextField,
   Button,
-  FormControl,
-  Input,
-  ButtonGroup,
 } from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import Axios from 'axios'
 
 
 export default function Signup() {
   const [formState, setFormState] = useState({ firstName: "", lastName: "", username: "", email: "", password: "", avatar: "" });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const [imageSelected, setImageSelected] = useState("")
 
   const uploadImage = () => {
     const formData = new FormData()
     formData.append("file", imageSelected)
     formData.append("upload_preset", "m9i5zjc7")
-    // setFormState({
-    //   avatar: formState.avatar
-    // })
+
 
     Axios.post("https://api.cloudinary.com/v1_1/djhw1foiq/image/upload", formData).then((response) => {
       const userAvatar = response.data.url
@@ -44,7 +38,6 @@ export default function Signup() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("HELLLLO", formState)
     
     try {
     const { data } = await addUser({
@@ -64,12 +57,6 @@ export default function Signup() {
       ...formState,
       [name]: value,
     });
-
-  // setFormState({
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  // });
   };
   
 

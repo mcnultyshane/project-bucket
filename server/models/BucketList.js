@@ -1,16 +1,16 @@
-const { Schema, model } = require("mongoose");
+// const { Schema, model } = require("mongoose");
 
 
-const bucketListSchema = new Schema({
+// const bucketListSchema = new Schema({
 
-  campaigns: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Campaign',
-    },
-  ],
-});
+//   campaigns: [
+//     {
+//       type: Schema.Types.ObjectId,
+//       ref: 'Campaign',
+//     },
+//   ],
+// });
 
-const BucketList = model("BucketList", bucketListSchema);
+// const BucketList = model("BucketList", bucketListSchema);
 
-module.exports = BucketList;
+// module.exports = BucketList;

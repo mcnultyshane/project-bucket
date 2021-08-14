@@ -90,7 +90,7 @@ export default function NewCampaign() {
             label="Location"
             variant="outlined"
           />
-          <form className={classes.container} noValidate>
+          <div className={classes.container} noValidate>
             <TextField
               style={textInputStyle}
               onChange = {handleChange}
@@ -103,7 +103,8 @@ export default function NewCampaign() {
                 shrink: true,
               }}
             />
-          </form>
+            </div>
+          {/* </form> */}
 
           <Button
             id='newCampaignSubmit'
