@@ -10,7 +10,8 @@ import { setContext } from "@apollo/client/link/context";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import CampaignList from "./pages/CampaignList";
-import Profile from "./pages/Profile"
+import Profile from "./pages/Profile";
+import CampaignSingular from "./pages/CampaignSingular";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
 import UserProvider from "./utils/UserContext";
@@ -43,6 +44,17 @@ const client = new ApolloClient({
 });
 
 const theme = createTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+         body: {
+           background: 'linear-gradient(to right, black, gray, black)',
+           backgroundRepeat: "no-repeat",
+           backgroundAttachment: "fixed",
+        },
+      },
+    },
+  },
   type: dark,
   palette: {
     primary: {
@@ -52,25 +64,27 @@ const theme = createTheme({
       main: "#77D47D",
     },
     gray: {
-      main: "#666b6c",
+      main: "#545454",
     }, 
     black: "#000000",
   },
 });
-
+// backgroundColor: '#282c34',
+const gradientStyle = {backgroundImage: 'radial-gradient(gray, #282c34 )'}
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <ThemeProvider theme={theme}>
-        <div style={{ backgroundColor: '#282c34', height: '100vh', margin: 0 }}>
+        <ThemeProvider theme={theme} >
+        <div style={{ backgroundImage: 'radial-gradient(gray, #282c34 )', height: '100vh', margin: 0 }}>
           <UserProvider>
           <Navbar />
 
-          <Switch>
+          <Switch style={gradientStyle}>
             <Route exact path="/" component={Home}/>
             <Route exact path="/campaigns" component={CampaignList}/>
             <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/singlecampaign" component={CampaignSingular}/>
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
           {/* <Footer /> */}

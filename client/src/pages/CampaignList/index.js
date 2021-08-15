@@ -7,7 +7,8 @@ import CardContent from "@material-ui/core/CardContent";
 import { Button, ButtonGroup, Grid, Typography } from "@material-ui/core";
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import { NewCampaignButton } from "../../components/NewCampaignButton";
-import { QUERY_SINGLE_USER, QUERY_ME} from '../../utils/queries'
+import { QUERY_SINGLE_USER, QUERY_ME} from '../../utils/queries';
+import { Link } from "react-router-dom";
 
 
 const testArray = [1, 2, 3, 4, 5];
@@ -23,7 +24,7 @@ export default function CampaignList() {
     }
   );
   const user = data?.me || data?.user || {};
-
+  const gradientStyle = {backgroundImage: 'linear-gradient(ro right, black, gray, black)'}
 
   return (
     <Grid
@@ -38,7 +39,7 @@ export default function CampaignList() {
       {testArray.map((item, index) => {
           return (
             
-        <Grid item xs={6} key={index} style={{minWidth: '50%', marginTop: '15px', backgroundColor: '#282c34', borderRadius: '20px'}}>
+        <Grid item xs={6} key={index} style={{minWidth: '50%', marginTop: '15px',  borderRadius: '20px'}}>
           <Card style={{backgroundColor: 'gray', color: 'white'}}>
             <CardContent>
               <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
@@ -50,7 +51,7 @@ export default function CampaignList() {
             </CardContent>
             <CardActions>
               <ButtonGroup variant="contained" >
-              <Button size="small">View Campaign</Button>
+              <Button size="small" component={Link} to="/singlecampaign">View Campaign</Button>
               <Button size="small">View User's Profile</Button>
               </ButtonGroup>
             </CardActions>

@@ -52,7 +52,7 @@ export default function Profile() {
 
 
   return (
-    <>
+    <div style={{backgroundImage: 'radial-gradient(gray, #282c34 )'}} >
         <Grid
       container
       direction="column"
@@ -69,7 +69,7 @@ export default function Profile() {
     
     />
 </Grid>
-</>
+</div>
   );
 }
 
