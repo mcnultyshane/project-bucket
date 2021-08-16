@@ -9,7 +9,8 @@ import RoomIcon from "@material-ui/icons/Room";
 import axios from "axios";
 import Auth from '../../utils/auth'
 import { SignupButton } from "../SignupButton";
-import { Typography } from "@material-ui/core";
+import { Typography, Button, ButtonGroup } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -80,14 +81,18 @@ export default function Map() {
             latitude={parseInt(p.lat)}
             longitude={parseInt(p.long)}
               closeButton={true}
-              closeOnClick={true}
+              closeOnClick={false}
               onClose={() => setCurrentPinId(null)}
+              // onClose={() => setCurrentPinId(null)}
               anchor="left"
             >
               <div>
                 <Typography variant="h6">{p.title}</Typography>
                 <Typography variant="body2">{p.description}</Typography>
-                
+                <ButtonGroup size="small" color="secondary" variant="subtitle1">
+                  <Button component={Link} to={`campaigns/${p._id}`}>Visit Campaign Page</Button>
+                <Button component={Link} to={`profiles/${p.user[0].username}`} >Visit {p.user[0].username}'s Profile</Button>
+                </ButtonGroup>
               </div>
             </Popup>
           )}
