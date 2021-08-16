@@ -123,7 +123,7 @@ export default function Signup() {
             variant="contained"
             style={submitStyle}
           >
-            Use the 'Choose File' Button above to Upload an image for your profile.
+            Sign Up
           </Button>
         </form>
       </Paper>
