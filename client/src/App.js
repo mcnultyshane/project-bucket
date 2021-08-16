@@ -85,7 +85,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route exact path="/campaigns" component={CampaignList}/>
             <Route exact path="/profile" component={Profile}/>
-            <Route exact path="/singlecampaign" component={CampaignSingular}/>
+            <Route exact path="/singlecampaign/:campaignId" component={CampaignSingular}/>
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
           {/* <Footer /> */}

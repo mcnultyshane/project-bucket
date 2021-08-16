@@ -41,6 +41,21 @@ export const QUERY_CAMPAIGNS = gql`
     }
   }
 `;
+export const QUERY_SINGLE_CAMPAIGN =gql`
+query getSingleCampaign($id: ID!) {
+  getSingleCampaign(campaignId: $id) {
+    _id
+    title
+    description
+    fundsNeeded
+    long
+    lat
+    user {
+      username
+    }
+  }
+}
+`;
 export const QUERY_SINGLE_USER = gql`
 {
   me {
@@ -52,6 +67,9 @@ export const QUERY_SINGLE_USER = gql`
   avatar }
 }
 `;
+
+
+
 export const QUERY_ME = gql`
   query me {
     me {

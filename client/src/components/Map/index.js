@@ -101,7 +101,7 @@ export default function Map() {
     </ReactMapGL>
     </div> ) : (
       <div style={{ marginTop:0}}> 
-        <div style={{ marginTop:0, height:220, justifyContent: 'center'}}>
+        <div style={{ marginTop:0, marginBottom: '4rem', height:220, justifyContent: 'center'}}>
           <h1 style={{textAlign: 'center', fontSize:50}}>Welcome to B*UCKET</h1>
           <h2 style={{textAlign: 'center'}}>Sign Up to join our community of go-getters and bucket-listers.</h2>
           <div style={{textAlign:'center'}}><SignupButton style={signupStyle} /></div>

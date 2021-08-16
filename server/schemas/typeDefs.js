@@ -19,11 +19,6 @@ const typeDefs = gql`
     coordinates: String
   }
 
-  # type BucketList {
-  #  _id: ID!
-  #  campaigns: [Campaign]
-  #}
-
   type Campaign {
     _id: ID!
     title: String
@@ -51,24 +46,8 @@ const typeDefs = gql`
 
   type Update {
     _id: ID
-    content: String
-    dateCreated: String
-    # author: User!
-    # lastUpdated: String
+    description: String
   }
-
-
-
-  # input campaignDetails {
-  #   title: String
-  #   description: String
-  #   dateCreated: String
-  #   dateCompleted: String
-  #   isComplete: Boolean
-  #   location: [Location]
-  #   fundsNeeded: Float
-  #   donations: Float
-  # }
 
   type Auth {
     token: ID
