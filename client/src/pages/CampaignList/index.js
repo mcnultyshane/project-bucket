@@ -38,7 +38,6 @@ export default function CampaignList( {userId}) {
       spacing={3}
     >
       <NewCampaignButton userId={userId}  />
-      
       {campaigns.map((campaign) => {
           return (
             
@@ -55,7 +54,7 @@ export default function CampaignList( {userId}) {
             <CardActions>
               <ButtonGroup variant="contained" >
               <Button size="small" component={Link} to="/singlecampaign">View Campaign</Button>
-              <Button size="small">View User's Profile</Button>
+              <Button component={Link} to={`/profiles/${campaign.user[0].username}`} size="small">View User's Profile</Button>
               </ButtonGroup>
             </CardActions>
           </Card>

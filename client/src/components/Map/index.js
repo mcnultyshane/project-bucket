@@ -1,11 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_CAMPAIGNS } from "../../utils/queries"
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import RoomIcon from "@material-ui/icons/Room";
 import axios from "axios";
 import Auth from '../../utils/auth'
 import { SignupButton } from "../SignupButton";
+import { Typography } from "@material-ui/core";
+
+
 export default function Map() {
+  const { loading, data } = useQuery(QUERY_CAMPAIGNS);
+  const campaigns = data?.getCampaigns || [];
+  console.log(campaigns)
+
   const [viewport, setViewport] = useState({
 
     width: "100vw",
@@ -16,34 +25,20 @@ export default function Map() {
   });
   const [showPopup, togglePopup] = React.useState(false);
   const [currentPinId, setCurrentPinId] = useState(null);
-    const [pins, setPins] = useState([
-    {
-      _id: 5,
-      campaign: "Climb Everest",
-      username: "Kimber",
-      lat: 27.988121,
-      long: 86.924973
-    },
-    {
-      _id: 6,
-      campaign: "Swim the Red Sea",
-      username: "Stevey",
-      lat: 20.280231,
-      long: 38.512573
-    },
-  ]);
+  const [pins, setPins] = useState([]);
+  
 
-  //   useEffect(() => {
-  //       const getPins =async ()=> {
-  //           try{
-  //             const res = await axios.get()
-  //             setPins(res.data)
-  //           } catch(err) {
-  //             console.log(err)
-  //           }
-  //       };
-  //       getPins();
-  //   }, [])
+    // useEffect(() => {
+    //     const getPins = async ()=> {
+    //         try{
+    //           const { long, lat } = campaigns
+    //           setPins(res.data)
+    //         } catch(err) {
+    //           console.log(err)
+    //         }
+    //     };
+    //     getPins();
+    // }, [])
 
   const handleMarkerClick = (id) => {
     setCurrentPinId(id);
@@ -61,12 +56,12 @@ export default function Map() {
       mapStyle="mapbox://styles/ksedd/cksc6kfgo0u8218qt31axgx6p"
     >
         
-      {pins.map((p) => (
+      {campaigns.map((p) => (
         <>
         
           <Marker
-            latitude={p.lat}
-            longitude={p.long}
+            latitude={parseInt(p.lat)}
+            longitude={parseInt(p.long)}
             offsetLeft={-20}
             offsetTop={-10}
           >
@@ -78,14 +73,18 @@ export default function Map() {
           </Marker>
           {p._id === currentPinId && (
             <Popup
-              latitude={p.lat}
-              longitude={p.long}
+            latitude={parseInt(p.lat)}
+            longitude={parseInt(p.long)}
               closeButton={true}
               closeOnClick={true}
               onClose={() => setCurrentPinId(null)}
               anchor="left"
             >
-              <div>{p.campaign}</div>
+              <div>
+                <Typography variant="h6">{p.title}</Typography>
+                <Typography variant="body2">{p.description}</Typography>
+                
+              </div>
             </Popup>
           )}
         </>

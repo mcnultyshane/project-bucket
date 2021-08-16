@@ -35,10 +35,12 @@ const userSchema = new Schema({
     avatar: {
         type: String
     },
-    bucketList: {
+    bucketList: [
+        {
         type: Schema.Types.ObjectId,
         ref: "Campaign"
     },
+],
 
     location: [location.schema],
 

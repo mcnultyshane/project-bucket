@@ -20,11 +20,12 @@ const resolvers = {
         }
         throw new AuthenticationError("You need to be logged in!");
       },
-      getCampaigns: async () => {
-        return Campaign.find();
+      getCampaigns: async (parent, { username }) => {
+        const params = username ? { username } : {}
+        return Campaign.find(params);
       },
-      getSingleCampaign: async (parent, { _id }) => {
-        return Campaign.findOne({ _id });
+      getSingleCampaign: async (parent, { campaignId }) => {
+        return Campaign.findOne({ _id: campaignId });
       },
     },
 
