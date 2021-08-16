@@ -46,10 +46,7 @@ const typeDefs = gql`
 
   type Update {
     _id: ID
-    content: String
-    dateCreated: String
-    # author: User!
-    # lastUpdated: String
+    description: String
   }
 
   type Auth {

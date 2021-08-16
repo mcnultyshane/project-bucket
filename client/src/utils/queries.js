@@ -53,9 +53,6 @@ query getSingleCampaign($id: ID!) {
     user {
       username
     }
-    updates {
-      description
-    }
   }
 }
 `;
@@ -70,6 +67,9 @@ export const QUERY_SINGLE_USER = gql`
   avatar }
 }
 `;
+
+
+
 export const QUERY_ME = gql`
   query me {
     me {

@@ -160,7 +160,7 @@ export default function CampaignCard(props) {
                   </CardContent>
                   <CardActions className={classes.campaignCardButtons}>
                     <ButtonGroup variant="contained" >
-                    <Button size="small" component={Link} to="/singlecampaign">Edit Campaign</Button>
+                    <Button size="small" component={Link} to={`/singlecampaign/${campaign._id}`}>Edit Campaign</Button>
 
                     <Tooltip title="Delete" placement="bottom-end">
                       <Button size="small">
