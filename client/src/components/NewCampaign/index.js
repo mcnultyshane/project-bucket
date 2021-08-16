@@ -11,7 +11,7 @@ const NewCampaign = () => {
     description: "",
     fundsNeeded: "",
     long: "",
-    lat: "",
+    lat: ""
   });
 
   const [addBucketList, { error }] = useMutation(ADD_CAMPAIGN);
@@ -27,8 +27,8 @@ const NewCampaign = () => {
         },
       });
       console.log(data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
   // const [formState, setFormState] = useState({ title: "", description: "", fundsNeeded: ""})

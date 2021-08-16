@@ -37,8 +37,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CAMPAIGN = gql`
-mutation addCampaign($title: String!, $description: String!) {
-  addCampaign(title: $title, description: $description){
+mutation addCampaign($title: String!, $description: String!, $fundsNeeded: String!, $long: String!, $lat: String!) {
+  addCampaign(title: $title, description: $description, fundsNeeded: $fundsNeeded, long: $long, lat: $lat){
     _id
     title
     description

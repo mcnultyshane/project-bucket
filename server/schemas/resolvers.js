@@ -77,6 +77,7 @@ const resolvers = {
           user: context.user
 
         });
+        console.log(campaign)
         await User.findByIdAndUpdate(
           {_id: context.user._id}, 
           {$push: { bucketList: campaign._id } },
