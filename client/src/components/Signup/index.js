@@ -114,7 +114,7 @@ export default function Signup() {
           <input type="file" name="avatar" onChange={(e)=> {
             setImageSelected(e.target.files[0])
             }} />
-            <Button size="small" onClick={uploadImage}>upload</Button>
+            <Button size="small" onClick={uploadImage}>Use the 'Choose File' Button to upload an image for your avatar.</Button>
             </div>
           <Button
             id="signupSubmit"
