@@ -7,7 +7,6 @@ import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid,Tooltip, Typog
 import {Autorenew, PostAddIcon} from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function CampaignCard(props) {
   const classes = useStyles();
   return (
@@ -84,17 +82,12 @@ export default function CampaignCard(props) {
           Philadelphia, PA
         </Typography>
       </CardContent>
-      <CardActions className={classes.profileCardButtons}>
-        <ButtonGroup variant="contained" >
-          <Button size="small">Edit Profile</Button>
-          <Button size="small">Change Avatar</Button>
-        </ButtonGroup>
-      </CardActions>
+
 
       </Card>
     </Grid>
 
-{/* This is where the campaigns are spread on cards */}
+{/* This is where the campaign is displayed*/}
       <Grid item xs={8}>
           {props.campaigns.map((campaign) => {
             return (
@@ -109,23 +102,42 @@ export default function CampaignCard(props) {
                     {campaign.description}
                     </Typography>
                   </CardContent>
-                  <CardActions className={classes.campaignCardButtons}>
-                    <ButtonGroup variant="contained" >
-                    <Button size="small" component={Link} to="/singlecampaign">Edit Campaign</Button>
-
-                    <Tooltip title="Delete" placement="bottom-end">
-                    <Button size="small"><DeleteIcon /></Button>
-                  </Tooltip>
-                    </ButtonGroup>
-
-                  </CardActions>
 
                 </Card>
             </Grid>
               )
           })}
         </Grid>
+{/* This is where the updates are displayed*/}
 
-    </Grid>
+
+</Grid>
   );
+}
+
+export function UpdateCard(props) {
+    const classes = useStyles();
+    return (
+
+<Grid className={classes.profileCard} item xs={8}>
+          {props.updates.map((updates) => {
+            return (
+              <Grid item  key={updates.id} >
+        
+                <Card  className={classes.campaignCard} xs={6} spacing={2} >
+                  <CardContent>
+                  <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
+                    {updates.name}
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                    {updates.description}
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+            </Grid>
+              )
+          })}
+        </Grid>
+);
 }
