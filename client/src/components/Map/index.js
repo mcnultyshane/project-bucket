@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_CAMPAIGNS } from "../../utils/queries"
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+// This is a dependency of react-map-gl even if you didn't explicitly install it
+import mapboxgl from "mapbox-gl"; 
 import RoomIcon from "@material-ui/icons/Room";
 import axios from "axios";
 import Auth from '../../utils/auth'
@@ -10,6 +12,8 @@ import { SignupButton } from "../SignupButton";
 import { Typography } from "@material-ui/core";
 
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 export default function Map() {
   const { loading, data } = useQuery(QUERY_CAMPAIGNS);
   const campaigns = data?.getCampaigns || [];

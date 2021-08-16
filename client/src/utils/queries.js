@@ -61,8 +61,15 @@ export const QUERY_ME = gql`
       firstName
       lastName
       avatar
+      location {
+        address
+      }
+      bucketList {
+          title
+          description
+        }
+      }
     }
-  }
 `;
 
 export const QUERY_BUCKETLIST = gql`

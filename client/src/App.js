@@ -14,13 +14,13 @@ import Profile from "./pages/Profile";
 import CampaignSingular from "./pages/CampaignSingular";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
-import UserProvider from "./utils/UserContext";
+import  { UserProvider }  from "./utils/UserContext";
+
 // import { UpdateCampaign } from "./components/UpdateCampaign";
 // import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
 // import { NewCampaignButton } from "./components/NewCampaignButton";
 // import { LoginButton } from "./components/LoginButton";
 // import { SignupButton } from "./components/SignupButton";
-
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -72,6 +72,7 @@ const theme = createTheme({
 // backgroundColor: '#282c34',
 const gradientStyle = {backgroundImage: 'radial-gradient(gray, #282c34 )'}
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>

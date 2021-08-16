@@ -92,12 +92,14 @@ const typeDefs = gql`
       password: String!
       avatar: String
     ): Auth
+
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
+    
     login(email: String!, password: String!): Auth
     addCampaign(
       title: String!, description: String!, fundsNeeded: String!, long: String!, lat: String! 
