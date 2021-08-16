@@ -1,52 +1,51 @@
-
 import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid,Tooltip, Typography, IconButton} from "@material-ui/core";
+import { Avatar, Modal, Backdrop, Container ,Button, ButtonGroup, Grid,Tooltip, Typography, IconButton} from "@material-ui/core";
 import {Autorenew, PostAddIcon} from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../../../utils/queries";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    display: 'flex',
-
-    margin: 'auto',
-
+    display: "flex",
+    margin: "auto",
   },
   container: {
     gridGap: theme.spacing(3),
   },
   profileCard: {
-    marginTop: '15px',
+    marginTop: "15px",
   },
   profileCardContent: {
-    color: 'white' ,
-     backgroundColor: 'gray',
-     padding: '10px',
-     justifyContent: "center"
-  },
-  profileCardButtons:{
+    color: "white",
+    backgroundColor: "gray",
+    padding: "10px",
     justifyContent: "center",
-    marginTop:theme.spacing(3)
+  },
+  profileCardButtons: {
+    justifyContent: "center",
+    marginTop: theme.spacing(3),
   },
   campaignCard: {
-    minWidth: '50%',
-    marginTop: '15px',
-    color: 'white' , 
-    backgroundColor: 'gray'
+    minWidth: "50%",
+    marginTop: "15px",
+    color: "white",
+    backgroundColor: "gray",
   },
-  campaignCardButtons:{
-    justifyContent: "flex-end"
+  campaignCardButtons: {
+    justifyContent: "flex-end",
   },
   paper: {
     padding: theme.spacing(1),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     marginBottom: theme.spacing(1),
   },
   divider: {
@@ -55,77 +54,126 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(18),
     height: theme.spacing(18),
-    alignSelf: 'center',
-    margin: 'auto',
+    alignSelf: "center",
+    margin: "auto",
     marginBottom: theme.spacing(2),
   },
-
-
-
 }));
 
-
-
 export default function CampaignCard(props) {
-  const classes = useStyles();
-  return (
+
+  const { data } = useQuery(QUERY_ME);
+  const userData = data?.me || [];
+
+
   
-    <Grid className={classes.root} container direction="row" justifyContent="center" alignItems="flex-start" spacing={3}>
+  const classes = useStyles();
+ 
+  // console.log(user);
 
-{/* This is the avatar and profile container */}
-    <Grid className={classes.profileCard} item  alignItems="center"  item xs={2} >
-      <Card className={classes.profileCardContent} >
-      <CardContent>
-        <Avatar  alt="Remy Sharp" src="https://res.cloudinary.com/dllm7cfrg/image/upload/v1628948544/wallpapertip_cat-with-sunglasses-wallpaper_308464_fh8tf8.jpg" className={classes.avatar} />
-        <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
-          Delores Abernathy
-        </Typography>
-        <Typography variant="body2" component="p" style={{textAlign: 'center'}}>
-          Philadelphia, PA
-        </Typography>
-      </CardContent>
-      <CardActions className={classes.profileCardButtons}>
-        <ButtonGroup variant="contained" >
-          <Button size="small">Edit Profile</Button>
-          <Button size="small">Change Avatar</Button>
-        </ButtonGroup>
-      </CardActions>
+  const [open, setOpen] = React.useState(false);
 
-      </Card>
-    </Grid>
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-{/* This is where the campaigns are spread on cards */}
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Grid
+      className={classes.root}
+      container
+      direction="row"
+      justifyContent="center"
+      alignItems="flex-start"
+      spacing={3}
+    >
+      {/* This is the avatar and profile container */}
+      <Grid className={classes.profileCard} item xs={2}>
+        <Card className={classes.profileCardContent}>
+          <CardContent>
+            <Avatar
+              alt="Remy Sharp"
+              src={userData.avatar}
+              className={classes.avatar}
+            />
+            <Typography
+              variant="h5"
+              component="h1"
+              style={{ textAlign: "center" }}
+            >
+              {userData.firstName} {userData.lastName}
+            </Typography>
+            <Typography
+              variant="body2"
+              component="p"
+              style={{ textAlign: "center" }}
+            >
+              Philadelphia, PA
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.profileCardButtons}>
+            <ButtonGroup variant="contained">
+
+              <Button size="small">Edit Profile</Button>
+              <Button type="button" onClick={handleOpen}>Edit Avatar</Button>
+              <Modal
+                aria-labelledby="spring-modal-title"
+                aria-describedby="spring-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                // closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                {/* <div  className={classes.paper}>
+                  <EditAvatar user={userData}/>
+                </div> */}
+              </Modal>
+            </ButtonGroup>
+          </CardActions>
+        </Card>
+      </Grid>
+
+      {/* This is where the campaigns are spread on cards */}
       <Grid item xs={8}>
-          {props.campaigns.map((campaign) => {
-            return (
-              <Grid item  key={campaign.id} >
-        
-                <Card  className={classes.campaignCard} xs={6} spacing={2} >
-                  <CardContent>
-                    <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
+        {props.campaigns.map((campaign) => {
+          return (
+            <Grid item key={campaign.id}>
+              <Card className={classes.campaignCard} xs={6} spacing={2}>
+                <CardContent>
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    style={{ textAlign: "center" }}
+                  >
                     {campaign.name}
-                    </Typography>
-                    <Typography variant="body2" component="p">
+                  </Typography>
+                  <Typography variant="body2" component="p">
                     {campaign.description}
                     </Typography>
                   </CardContent>
                   <CardActions className={classes.campaignCardButtons}>
                     <ButtonGroup variant="contained" >
-                    <Button size="small" component={Link} to="/singlecampaign">Edit Campaign</Button>
+                    <Button size="small" component={Link} to={`/singlecampaign/${campaign._id}`}>Edit Campaign</Button>
 
                     <Tooltip title="Delete" placement="bottom-end">
-                    <Button size="small"><DeleteIcon /></Button>
-                  </Tooltip>
-                    </ButtonGroup>
-
-                  </CardActions>
-
-                </Card>
+                      <Button size="small">
+                        <DeleteIcon />
+                      </Button>
+                    </Tooltip>
+                  </ButtonGroup>
+                </CardActions>
+              </Card>
             </Grid>
-              )
-          })}
-        </Grid>
-
+          );
+        })}
+      </Grid>
     </Grid>
   );
 }

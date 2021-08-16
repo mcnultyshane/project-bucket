@@ -52,6 +52,27 @@ export const QUERY_SINGLE_USER = gql`
   avatar }
 }
 `;
+
+export const QUERY_SINGLE_CAMPAIGN = gql`
+query getSingleCampaign($id: ID!) {
+  getSingleCampaign(id: $id) {
+    _id
+    title
+    description
+    fundsNeeded
+    long
+    lat
+    user {
+      username
+    }
+    updates {
+      description
+    }
+  }
+}
+`;
+
+
 export const QUERY_ME = gql`
   query me {
     me {
@@ -61,8 +82,15 @@ export const QUERY_ME = gql`
       firstName
       lastName
       avatar
+      location {
+        address
+      }
+      bucketList {
+          title
+          description
+        }
+      }
     }
-  }
 `;
 
 export const QUERY_BUCKETLIST = gql`

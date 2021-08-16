@@ -5,8 +5,9 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid, Typography, IconButton} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import { QUERY_CAMPAIGNS } from "../../../utils/queries";
+import { QUERY_SINGLE_CAMPAIGN } from "../../../utils/queries";
 import { useQuery } from "@apollo/client";
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,17 +65,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CampaignCard(userId) {
+export default function CampaignCard() {
   const classes = useStyles();
-  const { loading, data } = useQuery(QUERY_CAMPAIGNS);
-  const campaigns = data?.getCampaigns || [];
-  console.log(campaigns)
+  const { campaignId } = useParams();
+
+  const { loading, data } = useQuery(QUERY_SINGLE_CAMPAIGN, {
+    // pass URL parameter
+    variables: { id: campaignId },
+  });
+ 
+  const campaign = data?.getSingleCampaign || [];
+
+  console.log(data)
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
-  
+    
     <Grid className={classes.root} container direction="row" justifyContent="center" alignItems="flex-start" spacing={3}>
 
 {/* This is the avatar and profile container */}
-    <Grid className={classes.profileCard} item  alignItems="center"  item xs={2} >
+    <Grid className={classes.profileCard}  alignItems="center"  item xs={5} >
       <Card className={classes.profileCardContent} >
       <CardContent>
         <Avatar  alt="Remy Sharp" src="https://res.cloudinary.com/dllm7cfrg/image/upload/v1628948544/wallpapertip_cat-with-sunglasses-wallpaper_308464_fh8tf8.jpg" className={classes.avatar} />
@@ -83,17 +95,13 @@ export default function CampaignCard(userId) {
         </Typography>
         <Typography variant="body2" component="p" style={{textAlign: 'center'}}>
           Philadelphia, PA
-        </Typography>
-      </CardContent>
-
-
+        </Typography >
+      </CardContent >
       </Card>
     </Grid>
 
 {/* This is where the campaign is displayed*/}
       <Grid item xs={8}>
-          {/* {campaigns.map((campaign) => { */}
-            return (
               <Grid item  key={campaign._id} >
         
                 <Card  className={classes.campaignCard} xs={6} spacing={2} >
@@ -108,8 +116,6 @@ export default function CampaignCard(userId) {
 
                 </Card>
             </Grid>
-              )
-          })}
         </Grid>
 {/* This is where the updates are displayed*/}
 
@@ -118,32 +124,26 @@ export default function CampaignCard(userId) {
   );
 }
 
-export function UpdateCard(props) {
+export function UpdateCard({updates}) {
     const classes = useStyles();
     return (
 
-<Grid className={classes.profileCard} item xs={8}>
-          {props.updates.map((updates) => {
-            return (
+<Grid className={classes.profileCard} item xs={8}>      
                 <>
-           
-              <Grid item  key={updates._id} >
+              <Grid item >
                
                 <Card  className={classes.campaignCard} xs={6} spacing={2} >
                   <CardContent>
                   <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
-                    {updates.name}
                     </Typography>
                     <Typography variant="body2" component="p">
-                    {updates.description}
                     </Typography>
                   </CardContent>
 
                 </Card>
             </Grid>
             </>
-              )
-          })}
+          )
         </Grid>
        
 );

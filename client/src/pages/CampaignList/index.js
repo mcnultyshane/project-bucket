@@ -54,7 +54,7 @@ export default function CampaignList( {userId}) {
             </CardContent>
             <CardActions>
               <ButtonGroup variant="contained" >
-              <Button size="small" component={Link} to="/singlecampaign">View Campaign</Button>
+              <Button size="small" component={Link} to={`/singlecampaign/${campaign._id}`}>View Campaign</Button>
               <Button size="small">View User's Profile</Button>
               </ButtonGroup>
             </CardActions>

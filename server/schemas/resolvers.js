@@ -23,8 +23,8 @@ const resolvers = {
       getCampaigns: async () => {
         return Campaign.find();
       },
-      getSingleCampaign: async (parent, { _id }) => {
-        return Campaign.findOne({ _id });
+      getSingleCampaign: async (parent, { campaignId }) => {
+        return Campaign.findOne({ campaignId});
       },
     },
 
