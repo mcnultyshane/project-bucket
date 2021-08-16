@@ -4,6 +4,7 @@ import { Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import Map from '../../components/Map'
 import mapImg from '../../images/bucketmap.png'
 export default function Home () {
+
     return(
     <>
     <Card>
