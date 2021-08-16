@@ -26,6 +26,21 @@ export const QUERY_USERS = gql`
     }
   }
 `;
+export const QUERY_CAMPAIGNS = gql`
+  query getCampaigns {
+    getCampaigns {
+      _id
+      title
+      description
+      fundsNeeded
+      long
+      lat
+      user {
+        username
+      }
+    }
+  }
+`;
 export const QUERY_SINGLE_USER = gql`
 {
   me {

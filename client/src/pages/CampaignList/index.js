@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import { Button, ButtonGroup, Grid, Typography } from "@material-ui/core";
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import { NewCampaignButton } from "../../components/NewCampaignButton";
-import { QUERY_SINGLE_USER, QUERY_ME} from '../../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_ME, QUERY_CAMPAIGNS} from '../../utils/queries';
 import { Link } from "react-router-dom";
 
 
@@ -15,16 +15,19 @@ const testArray = [1, 2, 3, 4, 5];
 
 
 
-export default function CampaignList() {
-   const { userId } = useParams();
-   const { data } = useQuery(
-    userId ? QUERY_SINGLE_USER : QUERY_ME,
-    {
-      variables: { userId: userId },
-    }
-  );
-  const user = data?.me || data?.user || {};
-  const gradientStyle = {backgroundImage: 'linear-gradient(ro right, black, gray, black)'}
+export default function CampaignList( {userId}) {
+  const { loading, data } = useQuery(QUERY_CAMPAIGNS);
+  const campaigns = data?.getCampaigns || [];
+  console.log(campaigns)
+  //  const { userId } = useParams();
+  //  const { data } = useQuery(
+  //   userId ? QUERY_SINGLE_USER : QUERY_ME,
+  //   {
+  //     variables: { userId: userId },
+  //   }
+  // );
+  // const user = data?.me || data?.user || {};
+  // const gradientStyle = {backgroundImage: 'linear-gradient(ro right, black, gray, black)'}
 
   return (
     <Grid
@@ -34,19 +37,19 @@ export default function CampaignList() {
       alignItems="center"
       spacing={3}
     >
-      <NewCampaignButton userId={user._id}  />
+      <NewCampaignButton userId={userId}  />
       
-      {testArray.map((item, index) => {
+      {campaigns.map((campaign) => {
           return (
             
-        <Grid item xs={6} key={index} style={{minWidth: '50%', marginTop: '15px',  borderRadius: '20px'}}>
+        <Grid item xs={6} key={campaign._id} style={{minWidth: '50%', marginTop: '15px',  borderRadius: '20px'}}>
           <Card style={{backgroundColor: 'gray', color: 'white'}}>
             <CardContent>
               <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
-                Title {item.index}
+                {campaign.title} 
               </Typography>
               <Typography variant="body2" component="p">
-                the stuff...
+                {campaign.description}
               </Typography>
             </CardContent>
             <CardActions>
