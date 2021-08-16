@@ -10,47 +10,52 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import Axios from 'axios'
-
+import Axios from "axios";
 
 export default function Signup() {
-  const [formState, setFormState] = useState({ firstName: "", lastName: "", username: "", email: "", password: "", avatar: "" });
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    avatar: "",
+  });
   const [addUser] = useMutation(ADD_USER);
-  const [imageSelected, setImageSelected] = useState("")
+  const [imageSelected, setImageSelected] = useState("");
 
   const uploadImage = () => {
-    const formData = new FormData()
-    formData.append("file", imageSelected)
-    formData.append("upload_preset", "m9i5zjc7")
+    const formData = new FormData();
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "m9i5zjc7");
 
-
-    Axios.post("https://api.cloudinary.com/v1_1/djhw1foiq/image/upload", formData).then((response) => {
-      const userAvatar = response.data.url
-      console.log(userAvatar)
-        setFormState({
-          ...formState,
-        avatar: userAvatar
-    })
-    }) 
-
-     
+    Axios.post(
+      "https://api.cloudinary.com/v1_1/djhw1foiq/image/upload",
+      formData
+    ).then((response) => {
+      const userAvatar = response.data.url;
+      console.log(userAvatar);
+      setFormState({
+        ...formState,
+        avatar: userAvatar,
+      });
+    });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
+
     try {
-    const { data } = await addUser({
-      variables: { ...formState
-      },
-    });
-    console.log(data)
-    const token = data.addUser.token;
-    Auth.login(token);
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+      console.log(data);
+      const token = data.addUser.token;
+      Auth.login(token);
     } catch (error) {
-    console.error(error);
-  }
-  }
+      console.error(error);
+    }
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -58,12 +63,11 @@ export default function Signup() {
       [name]: value,
     });
   };
-  
 
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#77D47D" };
-  const submitStyle = { backgroundColor: "#77D47D", marginTop:10};
+  const submitStyle = { backgroundColor: "#77D47D", marginTop: 10 };
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
@@ -73,7 +77,7 @@ export default function Signup() {
           </Avatar>
           <h2 style={headerStyle}>Sign Up</h2>
           <Typography variant="caption">
-            Please fill out this form to create an account
+            Please fill out this form to begin your b*ucket
           </Typography>
         </Grid>
         <form onSubmit={handleFormSubmit}>
@@ -111,11 +115,17 @@ export default function Signup() {
             label="Password"
           />
           <div>
-          <input type="file" name="avatar" onChange={(e)=> {
-            setImageSelected(e.target.files[0])
-            }} />
-            <Button size="small" onClick={uploadImage}>upload</Button>
-            </div>
+            <input
+              type="file"
+              name="avatar"
+              onChange={(e) => {
+                setImageSelected(e.target.files[0]);
+              }}
+            />
+            <Button size="small" onClick={uploadImage}>
+              Use the 'Choose File' button to upload an image for your profile
+            </Button>
+          </div>
           <Button
             id="signupSubmit"
             align="center"
