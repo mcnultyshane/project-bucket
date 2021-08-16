@@ -2,31 +2,13 @@ import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-<<<<<<< HEAD
-import {
-  Avatar,
-  Backdrop,
-  Modal,
-  Button,
-  ButtonGroup,
-  Grid,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
-
-import DeleteIcon from "@material-ui/icons/Delete";
-import { makeStyles } from "@material-ui/core/styles";
-// import { EditButton } from "./EditButton";
-import EditAvatar from "../components/EditAvatar";
-import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../../../utils/queries";
-=======
-import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid,Tooltip, Typography, IconButton} from "@material-ui/core";
+import { Avatar, Modal, Backdrop, Container ,Button, ButtonGroup, Grid,Tooltip, Typography, IconButton} from "@material-ui/core";
 import {Autorenew, PostAddIcon} from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
->>>>>>> ea8854f856067656c7e28292237db1ca687a4949
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../../../utils/queries";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,9 +129,9 @@ export default function CampaignCard(props) {
                   timeout: 500,
                 }}
               >
-                <div  className={classes.paper}>
+                {/* <div  className={classes.paper}>
                   <EditAvatar user={userData}/>
-                </div>
+                </div> */}
               </Modal>
             </ButtonGroup>
           </CardActions>
