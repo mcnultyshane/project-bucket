@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+// This is a dependency of react-map-gl even if you didn't explicitly install it
+import mapboxgl from "mapbox-gl"; 
 import RoomIcon from "@material-ui/icons/Room";
 import axios from "axios";
 import Auth from '../../utils/auth'
 import { SignupButton } from "../SignupButton";
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 export default function Map() {
   const [viewport, setViewport] = useState({
 

@@ -17,6 +17,7 @@
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.5",
     "jwt-decode": "^3.1.2",
+    "mapbox-gl": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-map-gl": "^6.1.16",
@@ -24,7 +25,8 @@
     "react-scripts": "4.0.3",
     "react-spring": "^8.x",
     "styled-components": "^5.x",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
