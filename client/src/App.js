@@ -13,13 +13,13 @@ import CampaignList from "./pages/CampaignList";
 import Profile from "./pages/Profile"
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import { dark } from "@material-ui/core/styles/createPalette";
-import UserProvider from "./utils/UserContext";
+import  { UserProvider }  from "./utils/UserContext";
+
 // import { UpdateCampaign } from "./components/UpdateCampaign";
 // import { UpdateCampaignButton } from "./components/UpdateCampaignButton"
 // import { NewCampaignButton } from "./components/NewCampaignButton";
 // import { LoginButton } from "./components/LoginButton";
 // import { SignupButton } from "./components/SignupButton";
-
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -59,15 +59,16 @@ const theme = createTheme({
 });
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <ThemeProvider theme={theme}>
         <div style={{ backgroundColor: '#282c34', height: '100vh', margin: 0 }}>
-          <UserProvider>
+          <UserProvider >
           <Navbar />
 
-          <Switch>
+          <Switch >
             <Route exact path="/" component={Home}/>
             <Route exact path="/campaigns" component={CampaignList}/>
             <Route exact path="/profile" component={Profile}/>

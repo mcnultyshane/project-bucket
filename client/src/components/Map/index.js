@@ -52,7 +52,7 @@ export default function Map() {
       {...viewport}
       mapboxApiAccessToken="pk.eyJ1Ijoia3NlZGQiLCJhIjoiY2tzYngxdzVtMDdrMzJvcGNtYmFpdXVieiJ9.oeGFcgwDXXXnsB0FcuLUPw"
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      mapStyle="mapbox://styles/ksedd/cksbxs7mh0lsa18qt69p56kc7"
+      mapStyle="mapbox://styles/ksedd/cksc6kfgo0u8218qt31axgx6p"
     >
         
       {pins.map((p) => (
