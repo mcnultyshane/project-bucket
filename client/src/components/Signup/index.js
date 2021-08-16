@@ -73,7 +73,7 @@ export default function Signup() {
           </Avatar>
           <h2 style={headerStyle}>Sign Up</h2>
           <Typography variant="caption">
-            Please fill out this form to create an account
+            Please fill out this form to begin your B*UCKET
           </Typography>
         </Grid>
         <form onSubmit={handleFormSubmit}>
@@ -123,7 +123,7 @@ export default function Signup() {
             variant="contained"
             style={submitStyle}
           >
-            Sign Up
+            Use the 'Choose File' Button above to Upload an image for your profile.
           </Button>
         </form>
       </Paper>
