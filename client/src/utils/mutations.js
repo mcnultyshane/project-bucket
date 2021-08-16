@@ -46,8 +46,8 @@ mutation addCampaign($title: String!, $description: String!, $fundsNeeded: Strin
     long
     lat
     user {
+      _id
       username
-      email
     }
   }
 }

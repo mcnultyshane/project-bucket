@@ -37,7 +37,7 @@ const typeDefs = gql`
     lat: String
     fundsNeeded: String
     donations: Float
-    user: User
+    user: [User]
   }
 
   input AddCampaign {
@@ -79,7 +79,7 @@ const typeDefs = gql`
     users: [User]
     getSingleUser(username: String!): User
     getCampaigns(username: String): [Campaign]
-    getSingleCampaign(id: ID!): Campaign
+    getSingleCampaign(campaignId: ID!): Campaign
     me: User
   }
 

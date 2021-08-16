@@ -23,6 +23,17 @@ const campaignSchema = new Schema({
     type: String,
     trim: true,
   },
+  user: [
+    {
+      _id: {
+        type: String,
+
+      },
+      username: {
+        type: String,
+      },
+    },
+  ],
   contributors: [
     {
       type: Schema.Types.ObjectId,

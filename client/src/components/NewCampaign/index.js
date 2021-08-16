@@ -18,12 +18,16 @@ const NewCampaign = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const profile = Auth.getProfile().data
 
     try {
       const { data } = await addBucketList({
         variables: {
           ...campaignState,
-          user: Auth.getProfile().data,
+          user: {
+            _id: profile._id,
+            username: profile.username
+          } ,
         },
       });
       console.log(data);
