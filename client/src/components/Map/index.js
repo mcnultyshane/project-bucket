@@ -10,9 +10,9 @@ export default function Map() {
 
     width: "100vw",
     height: "100vh",
-    latitude: 37.7577,
-    longitude: -90.4376,
-    zoom: 4,
+    latitude: 30.7577,
+    longitude: 18.4376,
+    zoom: 2,
   });
   const [showPopup, togglePopup] = React.useState(false);
   const [currentPinId, setCurrentPinId] = useState(null);
@@ -71,7 +71,8 @@ export default function Map() {
             offsetTop={-10}
           >
             <RoomIcon
-              style={{ fontSize: viewport.zoom * 5 }}
+            color='primary'
+              style={{ fontSize: viewport.zoom * 10 }}
               onClick={() => handleMarkerClick(p._id)}
             />
           </Marker>

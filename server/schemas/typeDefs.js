@@ -33,9 +33,20 @@ const typeDefs = gql`
     dateCreated: String
     dateCompleted: String
     isComplete: Boolean
-    location: [Location]
-    fundsNeeded: Float
+    long: String
+    lat: String
+    fundsNeeded: String
     donations: Float
+    user: User
+  }
+
+  input AddCampaign {
+    _id: ID
+    title: String
+    description: String
+    fundsNeeded: String
+    long: String
+    lat: String
   }
 
   type Update {
@@ -89,10 +100,8 @@ const typeDefs = gql`
     ): User
     login(email: String!, password: String!): Auth
     addCampaign(
-      title: String!
-      description: String!
-      fundsNeeded: Float
-    ): User
+      title: String!, description: String!, fundsNeeded: String!, long: String!, lat: String! 
+    ): Campaign
     updateCampaign(campaignId: ID, content: String): Campaign
   }
 `;
