@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid,Tooltip, Typography, IconButton} from "@material-ui/core";
-import {Autorenew, PostAddIcon} from '@material-ui/icons';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { Avatar, Paper, Box, Container ,Button, ButtonGroup, Grid, Typography, IconButton} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import { QUERY_CAMPAIGNS } from "../../../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,8 +64,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CampaignCard(props) {
+export default function CampaignCard(userId) {
   const classes = useStyles();
+  const { loading, data } = useQuery(QUERY_CAMPAIGNS);
+  const campaigns = data?.getCampaigns || [];
+  console.log(campaigns)
   return (
   
     <Grid className={classes.root} container direction="row" justifyContent="center" alignItems="flex-start" spacing={3}>
@@ -89,14 +92,14 @@ export default function CampaignCard(props) {
 
 {/* This is where the campaign is displayed*/}
       <Grid item xs={8}>
-          {props.campaigns.map((campaign) => {
+          {/* {campaigns.map((campaign) => { */}
             return (
-              <Grid item  key={campaign.id} >
+              <Grid item  key={campaign._id} >
         
                 <Card  className={classes.campaignCard} xs={6} spacing={2} >
                   <CardContent>
                     <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
-                    {campaign.name}
+                    {campaign.title}
                     </Typography>
                     <Typography variant="body2" component="p">
                     {campaign.description}
@@ -122,8 +125,10 @@ export function UpdateCard(props) {
 <Grid className={classes.profileCard} item xs={8}>
           {props.updates.map((updates) => {
             return (
-              <Grid item  key={updates.id} >
-        
+                <>
+           
+              <Grid item  key={updates._id} >
+               
                 <Card  className={classes.campaignCard} xs={6} spacing={2} >
                   <CardContent>
                   <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
@@ -136,8 +141,10 @@ export function UpdateCard(props) {
 
                 </Card>
             </Grid>
+            </>
               )
           })}
         </Grid>
+       
 );
 }

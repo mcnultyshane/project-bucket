@@ -7,6 +7,7 @@ import { Button, Grid } from "@material-ui/core";
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CampaignCard  from "./components";
 import { UpdateCard } from "./components";
+import { UpdateCampaignButton } from "../../components/UpdateCampaignButton";
 
 const campaign = [
     {
@@ -39,7 +40,7 @@ export default function CampaignSingular() {
             alignItems="center"
             spacing={3}
           >
-      
+           <UpdateCampaignButton />
           {/* <h1>{user.username}</h1> */}
           <CampaignCard campaigns={campaign} />
           <UpdateCard updates={updates}
