@@ -65,6 +65,8 @@ export default function CampaignCard(props) {
   const { data } = useQuery(QUERY_ME);
   const userData = data?.me || [];
 
+
+  
   const classes = useStyles();
  
   // console.log(user);
