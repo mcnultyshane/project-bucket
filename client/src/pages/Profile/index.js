@@ -51,23 +51,24 @@ export default function Profile() {
   const userData = data?.me || [];
 console.log(userData);
   return (
-    <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={3}
-      >
-        <NewCampaignButton />
-        <h1 style={{ color: "white" }}>Hello {userData.firstName}!</h1>
+    <div style={{backgroundImage: 'radial-gradient(gray, #282c34 )'}} >
+        <Grid
+      container
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={3}
+    >
 
-        <CampaignCard
-          user={userData}
-          campaigns={campaigns}
-        />
-      </Grid>
-    </>
+      <NewCampaignButton />
+
+    {/* <h1>{user.username}</h1> */}
+    <CampaignCard campaigns={campaigns}
+    // userId={user._id} 
+    
+    />
+</Grid>
+</div>
   );
 }
 

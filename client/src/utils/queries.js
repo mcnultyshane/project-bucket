@@ -56,3 +56,14 @@ export const QUERY_ME = gql`
       }
     }
 `;
+
+export const QUERY_BUCKETLIST = gql`
+{
+   campaign {
+     _id
+     title
+     description
+     fundsNeeded
+   }
+}
+`;
