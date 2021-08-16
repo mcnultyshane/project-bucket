@@ -12,7 +12,7 @@ const campaignSchema = new Schema({
         required: true,
         trim: true,
     },
-    contributers: [
+    contributors: [
         {
             type: Schema.Types.ObjectId,
             ref: 'User'

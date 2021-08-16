@@ -8,11 +8,13 @@ const resolvers = {
       users: async () => {
         return User.find();
       },
-      getSingleUser: async (parent, { username }) => {
-        return User.findOne({ username });
+      getSingleUser: async (parent, { userId }) => {
+        return User.findOne({ _id: userId });
       },
+      
   
       me: async (parent, args, context) => {
+
         if (context.user) {
           return User.findOne({ _id: context.user._id });
         }
@@ -63,22 +65,28 @@ const resolvers = {
     },
 
     // do we need a user context if block to be logged in?
-    addCampaign: async (parent, { title, description, fundsNeeded }, context) => {
+    addCampaign: async (parent, { title, description, fundsNeeded, long, lat }, context) => {
       console.log(context);
       if (context.user) { 
-        const campaign = new Campaign ({ title, description, fundsNeeded });
+        const campaign = await Campaign.create({
+          title, 
+          description,
+          fundsNeeded,
+          long,
+          lat,
+          user: context.user
 
+        });
         await User.findByIdAndUpdate(
           {_id: context.user._id}, 
-          {$push: { bucketList: campaign } },
+          {$push: { bucketList: campaign._id } },
           {new: true}
           );
         
       return campaign
       }
-        //throw new AuthenticationError('Not logged in');  
+        throw new AuthenticationError('Not logged in');  
     },
-    
     updateCampaign: async (parent, {campaignId, content}) => {
       return Campaign.findByIdAndUpdate(
         {_id: campaignId},

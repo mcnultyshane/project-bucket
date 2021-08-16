@@ -8,8 +8,8 @@ export default function Map() {
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
-    latitude: 37.7577,
-    longitude: -90.4376,
+    latitude: 30.7577,
+    longitude: 18.4376,
     zoom: 2,
   });
   const [showPopup, togglePopup] = React.useState(false);
