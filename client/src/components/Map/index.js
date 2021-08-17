@@ -89,8 +89,9 @@ export default function Map() {
               <div>
                 <Typography variant="h6">{p.title}</Typography>
                 <Typography variant="body2">{p.description}</Typography>
+                <Typography variant="body2" align="right" color="secondary">${p.fundsNeeded} needed to complete</Typography>
                 <ButtonGroup size="small" color="secondary" variant="subtitle1">
-                  <Button component={Link} to={`campaigns/${p._id}`}>Visit Campaign Page</Button>
+                  <Button component={Link} to={`singlecampaign/${p._id}`}>Visit Campaign Page</Button>
                 <Button component={Link} to={`profiles/${p.user[0].username}`} >Visit {p.user[0].username}'s Profile</Button>
                 </ButtonGroup>
               </div>
@@ -137,7 +138,10 @@ export default function Map() {
                 onClose={() => setCurrentPinId(null)}
                 anchor="left"
               >
-                <div>{p.campaign}</div>
+                <div>
+                <Typography variant="h6">{p.title}</Typography>
+                <Typography variant="body2">{p.description}</Typography>
+                </div>
               </Popup>
             )}
           </>

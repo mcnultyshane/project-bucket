@@ -65,3 +65,18 @@ mutation updateCampaign ($campaignId: ID, $content: String) {
   }
 }`
 
+export const REMOVE_CAMPAIGN = gql`
+  mutation removeCampaign($campaignId: ID!) {
+    removeCampaign(campaignId: $campaignId) {
+      _id
+      title
+      description
+      fundsNeeded
+      long
+      lat
+      user {
+      username
+      }
+    }
+  }
+`;

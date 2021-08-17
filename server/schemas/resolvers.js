@@ -98,7 +98,16 @@ const resolvers = {
           } }
         }
       , {new: true});
-    }
+    },
+    removeCampaign: async (parent, { campaignId }, context) => {
+      console.log( campaignId )
+      if (context.user) {
+        return Campaign.findOneAndDelete({ _id: campaignId })
+         
+       }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

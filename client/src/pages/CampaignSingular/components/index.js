@@ -88,15 +88,7 @@ export default function CampaignCard() {
 {/* This is the avatar and profile container */}
     <Grid className={classes.profileCard}  alignItems="center"  item xs={5} >
       <Card className={classes.profileCardContent} >
-      <CardContent>
-        <Avatar  alt="Remy Sharp" src="https://res.cloudinary.com/dllm7cfrg/image/upload/v1628948544/wallpapertip_cat-with-sunglasses-wallpaper_308464_fh8tf8.jpg" className={classes.avatar} />
-        <Typography variant="h5" component="h1" style={{textAlign: 'center'}}>
-          Delores Abernathy
-        </Typography>
-        <Typography variant="body2" component="p" style={{textAlign: 'center'}}>
-          Philadelphia, PA
-        </Typography >
-      </CardContent >
+        <Typography variant="h6" color="secondary"> Bucket List item submitted by: {campaign.user[0].username} </Typography>
       </Card>
     </Grid>
 
@@ -112,6 +104,8 @@ export default function CampaignCard() {
                     <Typography variant="body2" component="p">
                     {campaign.description}
                     </Typography>
+                    <Typography variant="body2" component="p" align="right" color="primary">Amount Needed: {campaign.fundsNeeded}</Typography>
+                    <Typography variant="body2" component="p" align="right" color="primary">Location: {campaign.lat}, {campaign.long}</Typography>
                   </CardContent>
 
                 </Card>
