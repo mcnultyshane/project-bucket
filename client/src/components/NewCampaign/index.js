@@ -30,6 +30,7 @@ const NewCampaign = () => {
           } ,
         },
       });
+      window.location.reload(true)
       console.log(data);
     } catch (error) {
       console.error(error);

@@ -84,6 +84,7 @@ const typeDefs = gql`
       title: String!, description: String!, fundsNeeded: String!, long: String!, lat: String! 
     ): Campaign
     updateCampaign(campaignId: ID, content: String): Campaign
+    removeCampaign(campaignId: ID!): Campaign
   }
 `;
 

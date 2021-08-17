@@ -1,25 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, Button, ButtonGroup } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu,
+  Button,
+  ButtonGroup,
+} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListAltTwoToneIcon from "@material-ui/icons/ListAltTwoTone";
-import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import HomeTwoTone from "@material-ui/icons/HomeTwoTone";
-import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
+import MapOutlinedIcon from "@material-ui/icons/MapOutlined";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { SignupButton } from "../SignupButton";
-import { LoginButton } from "../LoginButton"
+import { LoginButton } from "../LoginButton";
 import useStyles from "./styles";
-import Auth from '../../utils/auth'
+import Auth from "../../utils/auth";
 
 export default function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const loginStyle = {display:'inline-block', virticalAlign: 'middle', float: 'right'}
+  const loginStyle = {
+    display: "inline-block",
+    virticalAlign: "middle",
+    float: "right",
+  };
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -52,23 +67,23 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <div>
-      {Auth.loggedIn() ? (
-        <>
-      <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
-        My Profile
-      </MenuItem>
-      <MenuItem onClick={Auth.logout}>Log Out</MenuItem>
-      </>
-      ) : (
-        <>
-        <MenuItem> 
-          <LoginButton />
-           </MenuItem>
-        <MenuItem >
-          <SignupButton />
-        </MenuItem>
-        </>
-      )}
+        {Auth.loggedIn() ? (
+          <>
+            <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
+              My Profile
+            </MenuItem>
+            <MenuItem onClick={Auth.logout}>Log Out</MenuItem>
+          </>
+        ) : (
+          <>
+            <MenuItem>
+              <LoginButton />
+            </MenuItem>
+            <MenuItem>
+              <SignupButton />
+            </MenuItem>
+          </>
+        )}
       </div>
     </Menu>
   );
@@ -85,33 +100,33 @@ export default function Navbar() {
       onClose={handleMobileMenuClose}
     >
       <div>
-      <MenuItem component={Link} to="/">
-        <IconButton aria-label="show map" color="inherit">
-          <Badge color="primary">
-            <MapOutlinedIcon color="black" style={{ fontSize:50}}/>
-          </Badge>
-        </IconButton>
-        <p>Map</p>
-      </MenuItem>
-      <MenuItem component={Link} to="/campaigns">
-        <IconButton aria-label="show new campaigns" color="inherit">
-          <Badge color="primary">
-            <ListAltOutlinedIcon color="black" style={{ fontSize:50}}/>
-          </Badge>
-        </IconButton>
-        <p>Bucket List</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircleOutlinedIcon color="black" style={{ fontSize:50}}/>
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+        <MenuItem component={Link} to="/">
+          <IconButton aria-label="show map" color="inherit">
+            <Badge color="primary">
+              <MapOutlinedIcon color="black" style={{ fontSize: 50 }} />
+            </Badge>
+          </IconButton>
+          <p>Map</p>
+        </MenuItem>
+        <MenuItem component={Link} to="/campaigns">
+          <IconButton aria-label="show new campaigns" color="inherit">
+            <Badge color="primary">
+              <ListAltOutlinedIcon color="black" style={{ fontSize: 50 }} />
+            </Badge>
+          </IconButton>
+          <p>Bucket List</p>
+        </MenuItem>
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircleOutlinedIcon color="black" style={{ fontSize: 50 }} />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
       </div>
     </Menu>
   );
@@ -123,7 +138,14 @@ export default function Navbar() {
         style={{ backgroundColor: "#B4EFB8", color: "#000000" }}
       >
         <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
+          <Typography
+            component={Link}
+            to="/"
+            className={classes.title}
+            style={{ color: "black", textDecoration: "none" }}
+            variant="h4"
+            noWrap
+          >
             B*UCKET
           </Typography>
           <div className={classes.search}>
@@ -137,14 +159,17 @@ export default function Navbar() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
-              style={{borderRadius:30}}
+              style={{ borderRadius: 30 }}
             />
           </div>
           {/* <div className={classes.grow} /> */}
-          <div className={classes.sectionDesktop} style={{display:'flex', justifyContent:'center', width:'50%'}}>
-          <IconButton component={Link} to="/" color="inherit">
+          <div
+            className={classes.sectionDesktop}
+            style={{ display: "flex", justifyContent: "center", width: "50%" }}
+          >
+            <IconButton component={Link} to="/" color="inherit">
               <Badge color="secondary">
-                <MapOutlinedIcon color="black" style={{ fontSize:50}}/>
+                <MapOutlinedIcon color="black" style={{ fontSize: 50 }} />
               </Badge>
             </IconButton>
             <IconButton
@@ -153,13 +178,17 @@ export default function Navbar() {
               aria-label="show new campaigns"
               color="inherit"
             >
-              <Badge badgeContent={2} color="primary">
-                <ListAltOutlinedIcon color="black" style={{ fontSize:50}}/>
+              <Badge color="primary">
+                <ListAltOutlinedIcon color="black" style={{ fontSize: 50 }} />
               </Badge>
             </IconButton>
           </div>
           {/* <div className={classes.grow} /> */}
-          <div className={classes.sectionDesktop} id='loginSignup' style={{position:'absolute', right: '20px'}}>
+          <div
+            className={classes.sectionDesktop}
+            id="loginSignup"
+            style={{ position: "absolute", right: "20px" }}
+          >
             {/* <IconButton component={Link} to="/" color="inherit">
               <Badge color="secondary">
                 <HomeTwoTone />
@@ -175,19 +204,22 @@ export default function Navbar() {
                 <ListAltTwoToneIcon />
               </Badge>
             </IconButton> */}
-            {Auth.loggedIn()? (
-            <IconButton onClick={handleProfileMenuOpen}>
-              <AccountCircleOutlinedIcon color="black" style={{ fontSize:50}} />
-            </IconButton> ) : (
-            <ButtonGroup variant="contained" color="secondary">
-              <Button>
-                <LoginButton />
-              </Button>
+            {Auth.loggedIn() ? (
+              <IconButton onClick={handleProfileMenuOpen}>
+                <AccountCircleOutlinedIcon
+                  color="black"
+                  style={{ fontSize: 50 }}
+                />
+              </IconButton>
+            ) : (
+              <ButtonGroup variant="contained" color="secondary">
+                <Button>
+                  <LoginButton />
+                </Button>
                 <Button>
                   <SignupButton />
-            
-              </Button>
-            </ButtonGroup>
+                </Button>
+              </ButtonGroup>
             )}
           </div>
           <div className={classes.sectionMobile}>

@@ -9,18 +9,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../../utils/queries";
+import { useMutation } from '@apollo/client';
+import { REMOVE_CAMPAIGN } from "../../../utils/mutations";
+import Auth from "../../../utils/auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: "flex",
-    margin: "auto",
   },
   container: {
-    gridGap: theme.spacing(3),
+    gridGap: theme.spacing(2),
   },
   profileCard: {
-    marginTop: "15px",
+    marginTop: "5px",
   },
   profileCardContent: {
     color: "white",
@@ -64,7 +66,27 @@ export default function CampaignCard(props) {
 
   const { data } = useQuery(QUERY_ME);
   const userData = data?.me || [];
+  const [removeCampaign, { error }] = useMutation(REMOVE_CAMPAIGN)
 
+  const handleDeleteCampaign = async (campaignId) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      console.log(campaignId)
+      const { data } = await removeCampaign({
+        variables: {
+        campaignId
+        }
+      })
+      window.location.reload(true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   
   const classes = useStyles();
@@ -91,7 +113,7 @@ export default function CampaignCard(props) {
       spacing={3}
     >
       {/* This is the avatar and profile container */}
-      <Grid className={classes.profileCard} item xs={2}>
+      <Grid className={classes.profileCard} item sm={2}>
         <Card className={classes.profileCardContent}>
           <CardContent>
             <Avatar
@@ -118,7 +140,7 @@ export default function CampaignCard(props) {
             <ButtonGroup variant="contained">
 
               <Button size="small">Edit Profile</Button>
-              <Button type="button" onClick={handleOpen}>Edit Avatar</Button>
+              <Button type="button">Edit Avatar</Button>
               <Modal
                 aria-labelledby="spring-modal-title"
                 aria-describedby="spring-modal-description"
@@ -144,7 +166,7 @@ export default function CampaignCard(props) {
       <Grid item xs={8}>
         {props.campaigns.map((campaign) => {
           return (
-            <Grid item key={campaign.id}>
+            <Grid item key={campaign._id}>
               <Card className={classes.campaignCard} xs={6} spacing={2}>
                 <CardContent>
                   <Typography
@@ -152,7 +174,7 @@ export default function CampaignCard(props) {
                     component="h1"
                     style={{ textAlign: "center" }}
                   >
-                    {campaign.name}
+                    {campaign.title}
                   </Typography>
                   <Typography variant="body2" component="p">
                     {campaign.description}
@@ -163,7 +185,7 @@ export default function CampaignCard(props) {
                     <Button size="small" component={Link} to={`/singlecampaign/${campaign._id}`}>Edit Campaign</Button>
 
                     <Tooltip title="Delete" placement="bottom-end">
-                      <Button size="small">
+                      <Button onClick={() => handleDeleteCampaign(campaign._id)} size="small">
                         <DeleteIcon />
                       </Button>
                     </Tooltip>
