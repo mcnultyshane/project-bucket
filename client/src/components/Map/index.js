@@ -90,7 +90,7 @@ export default function Map() {
                 <Typography variant="h6">{p.title}</Typography>
                 <Typography variant="body2">{p.description}</Typography>
                 <ButtonGroup size="small" color="secondary" variant="subtitle1">
-                  <Button component={Link} to={`campaigns/${p._id}`}>Visit Campaign Page</Button>
+                  <Button component={Link} to={`singlecampaign/${p._id}`}>Visit Campaign Page</Button>
                 <Button component={Link} to={`profiles/${p.user[0].username}`} >Visit {p.user[0].username}'s Profile</Button>
                 </ButtonGroup>
               </div>
