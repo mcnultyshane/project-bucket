@@ -20,7 +20,7 @@
   ## Usage
   A link to the deployed application can be found [here]().
 
-  ![Screenshot](...)
+  ![Screenshot](./client/src/images/screencap.jpg)
     
   ## License
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
